@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Invoice Form</title>
+	<style>
+		/* Основные цвета и размеры шрифтов */
+
+		:root {
+
+			--dark-grey-color: #141414;
+			--grey-color: #595757;
+			--hover-grey-color: #454343;
+			--light-grey-color: #E5E5E5;
+			--hover-light-grey-color: #DDDDDD;
+			--white-color: #FFFFFF;
+
+			--h1-font-size: 21px;
+			--typesetting-font-size: 14px;
+		}
+
+
+		/* Для бота */
+
+		body {
+			background-color: #464646;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+
+
+		/* Содержимое */
+
+		.content {
+			display: flex;
+			gap: 64px;
+		}
+
+
+		/* Форма */
+
+		.form {
+			box-sizing: border-box;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 44px;
+			width: 1435px;
+			height: 782px;
+			border-radius: 36px;
+			padding: 133px 64px 64px 64px;
+			background-color: var(--white-color);
+		}
+
+
+		/* Заголовок */
+
+		.title {
+			font: normal var(--h1-font-size) Arial, sans-serif;
+			color: var(--dark-grey-color);
+		}
+
+		.form__title {
+			margin: 0;
+			top: 64px;
+			left: 64px;
+			position: absolute;
+		}
+
+
+		/* Стартовая колонка */
+
+		.start-column {
+			display: flex;
+			flex-direction: column;
+			gap: 36px;
+			width: 433px;
+		}
+
+
+		/* Конечная колонка*/
+
+		.end-column {
+			display: flex;
+			flex-direction: column;
+			gap: 36px;
+			width: 810px;
+		}
+
+
+		/* Контрагет */
+
+		.counterparty {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			width: 433px;
+		}
+
+
+		/* Дополнение */
+
+		.addition {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 6px;
+			margin: 0;
+		}
+
+		.term {
+			width: 134px;
+			height: 20px;
+			font: normal var(--typesetting-font-size) Arial, sans-serif;
+			color: var(--dark-grey-color);
+		}
+
+		.details {
+			flex-basis: 293px;
+			margin: 0;
+			height: 20px;
+			font: normal var(--typesetting-font-size) Arial, sans-serif;
+			color: var(--grey-color);
+			text-align: left;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+
+		.details--display-none {
+			display: none;
+		}
+
+
+		/* Список */
+
+		.product-list {
+			display: flex;
+			flex-direction: column;
+			gap: 36px;
+			max-height: 237px;
+			overflow: scroll;
+		}
+
+
+		/* Продукт */
+
+		.product {
+			display: flex;
+			gap: 36px;
+		}
+
+
+		/* Калькулятор */
+
+		.calculation {
+			display: flex;
+			justify-content: right;
+			gap: 36px;
+			overflow: hidden;
+		}
+
+		.end-column__calculation {
+			margin-top: auto;
+		}
+
+
+		/* Кнопка */
+
+		.button {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-style: none;
+			border-radius: 6px;
+			height: 26px;
+			padding: 2px 12px;
+			color: var(--white-color);
+			font: normal var(--typesetting-font-size) sans-serif;
+		}
+
+		.button--grey {
+			background-color: var(--grey-color);
+		}
+
+		.button--light-grey {
+			background-color: var(--light-grey-color);
+		}
+
+		.button--font-dark-grey {
+			color: var(--dark-grey-color);
+		}
+
+		.button--light-grey:hover {
+			background-color: var(--hover-light-grey-color);
+			cursor: pointer;
+		}
+
+		.button--grey:hover {
+			background-color: var(--hover-grey-color);
+			cursor: pointer;
+		}
+
+
+
+		/* Заголовок поля ввода */
+
+		.label {
+			display: flex;
+			flex-direction: column;
+			gap: 12px;
+			font: bold var(--typesetting-font-size) Arial, sans-serif;
+			color: var(--dark-grey-color);
+		}
+
+		.lable--center {
+			align-items: center;
+		}
+
+
+		/* Поле ввода */
+
+		.input {
+			box-sizing: border-box;
+			height: 26px;
+			border: 1px solid var(--dark-grey-color);
+			border-radius: 6px;
+			padding: 0px 8px;
+			font: bold var(--typesetting-font-size) Arial, sans-serif;
+			color: var(--grey-color);
+		}
+
+
+		.input--width-extra-large {
+			width: 259px;
+		}
+
+		.input--width-large {
+			width: 114px;
+		}
+
+		.input--width-medium {
+			width: 88px;
+		}
+
+
+		.input--width-small {
+			width: 53px;
+		}
+
+		.input--appearance-none {
+			appearance: none;
+		}
+
+		.input--overflow-hidden {
+			overflow: hidden;
+		}
+
+		.input--background-corner-drawn {
+			background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23595757" width="16" height="16"><path d="M7 10l5 5 5-5H7z"/></svg>') no-repeat;
+			background-position: calc(100% - 4px) center;
+			background-size: 18px;
+		}
+
+
+		/* Поле вывода */
+
+		.output {
+			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			width: 74px;
+			height: 26px;
+			padding: 0px 8px;
+			font: bold var(--typesetting-font-size) Arial, sans-serif;
+			color: var(--grey-color);
+			text-align: center;
+		}
+	</style>
+</head>
+
+<body>
+
+	<form class="form">
+
+
+		<!-- Заголовок иновойса -->
+
+		<h1 class="title form__title">New Invoice № 1234</h1>
+
+
+		<!-- Общий раздел дл ввода данных -->
+
+		<section class="content">
+
+
+			<!-- Раздел с общими данными инвойса (дата, подрядчик и заказчик) -->
+
+			<section class="start-column">
+
+
+				<!-- Подраздел с вводом даты создания/обновления инвойса (по умолчанию текущая) -->
+
+				<label class="label">
+					Date (Сurrent by default)*
+					<input type="date" class="input input--width-large" data-date-id="invoice-date">
+				</label>
+
+
+				<!-- Подраздел с инофрмацией о подрядчике -->
+
+				<section class="counterparty">
+
+					<label class="label">
+						From (Business Name)*
+						<select
+							class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
+							<option selected disabled hidden></option>
+						</select>
+					</label>
+
+					<dl class="addition">
+
+						<dt class="term">Full Address:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-vendor-type="address">17 ashdene rd</dd>
+						<dd class="details details--display-none" data-vendor-type="address">London, Hogvards Street
+							11-11</dd>
+
+
+						<dt class="term">Phone Number:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-vendor-type="phone">+7801482145</dd>
+						<dd class="details details--display-none" data-vendor-type="phone">+7945623451</dd>
+
+
+						<dt class="term">Email:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-vendor-type="email">olyaevt23@gmail.com</dd>
+						<dd class="details details--display-none" data-vendor-type="email">flightpilates@gmail.com</dd>
+
+					</dl>
+					<dl class="addition">
+
+						<dt class="term">Bank Name:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-vendor-bank-type="name">lloyds</dd>
+						<dd class="details details--display-none" data-vendor-bank-type="name">RF</dd>
+
+
+						<dt class="term">Sort Number:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-vendor-bank-type="sortNumber">30-99-08</dd>
+						<dd class="details details--display-none" data-vendor-bank-type="sortNumber">234553</dd>
+
+
+						<dt class="term">Account Number:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-vendor-bank-type="accountNumber">21230660</dd>
+						<dd class="details details--display-none" data-vendor-bank-type="accountNumber">3233434222243
+						</dd>
+
+
+						<dt class="term">Alternative Method:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-vendor-bank-type="PayPal">17 ashdene rd</dd>
+						<dd class="details details--display-none" data-vendor-bank-type="Stripe">London, Hogvards Street
+							11-11</dd>
+
+					</dl>
+
+				</section>
+
+
+				<!-- Подраздел с информацией о заказчике -->
+
+				<section class="counterparty">
+
+					<label class="label">
+						To (Full Name / Business Name)*
+						<select
+							class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
+							<option selected disabled hidden></option>
+						</select>
+					</label>
+
+					<dl class="addition">
+
+						<dt class="term">Full Address:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-buyer-type="address">Kopengagen, Street Pronto
+							Avenu 14-10</dd>
+						<dd class="details details--display-none" data-buyer-type="address">London, Street Kratova Avenu
+							34-5</dd>
+
+						<dt class="term">Phone Number:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-buyer-type="phone">+32134422442</dd>
+						<dd class="details details--display-none" data-buyer-type="phone">+12343121446</dd>
+
+
+						<dt class="term">Email:</dt>
+						<dd class="details">⮑</dd>
+
+						<dd class="details details--display-none" data-buyer-type="email">kolyavarasev@gmail.com</dd>
+						<dd class="details details--display-none" data-buyer-type="email">AnnaSvaeva@gmail.com</dd>
+					</dl>
+
+				</section>
+
+			</section>
+
+
+			<!-- Раздел с товарами (перечисление и калькуляция, а так же комментарий по добавленным товарам) -->
+
+			<section class="end-column">
+
+
+				<!-- Секция со списком продуктов -->
+
+				<section class="product-list" data-type="product-list">
+
+
+					<!-- Секция с продуктом -->
+
+					<section class="product" data-type="product" data-product-id="0">
+
+						<label class="label lable--center">
+							Product*
+							<select
+								class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden">
+								<option selected disabled hidden></option>
+							</select>
+						</label>
+
+						<label class="label lable--center">
+							Date
+							<input type="date" class="input input--width-large">
+						</label>
+
+						<label class="label lable--center">
+							QTO
+							<input type="number" class="input input--width-small">
+						</label>
+
+						<label class="label lable--center">
+							Price*
+							<input type="number" step="any" class="input input--width-medium">
+						</label>
+
+						<label class="label lable--center">
+							Total
+							<output class="output">0</output>
+						</label>
+
+						<label class="label lable--center">
+							Delete
+							<button type="button" class="button button--light-grey button--font-dark-grey" data-button-name="delete-product-element">
+								⌫
+							</button>
+						</label>
+
+					</section>
+
+				</section>
+
+
+				<!-- Кнопка для cоздания новой продуктов -->
+
+				<button type="button" class="button button--light-grey" data-button-name="adding-product-element">
+					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path
+							d="M0 8C0 7.44772 0.447715 7 1 7H15C15.5523 7 16 7.44772 16 8C16 8.55228 15.5523 9 15 9H1C0.447715 9 0 8.55228 0 8Z"
+							fill="#595757" />
+						<path
+							d="M8 0C8.55228 2.41411e-08 9 0.447715 9 1L9 15C9 15.5523 8.55228 16 8 16C7.44771 16 7 15.5523 7 15L7 1C7 0.447715 7.44772 -2.41411e-08 8 0Z"
+							fill="#595757" />
+					</svg>
+				</button>
+
+
+				<!-- Подраздел с вычислением итогов по услугам -->
+
+				<section class="calculation end-column__calculation">
+
+					<label class="label lable--center">
+						Subtotal
+						<output class="output subtotal--input">0</output>
+					</label>
+
+					<label class="label lable--center">Discount (%)
+						<input type="number" step="any" class="input input--width-medium">
+					</label>
+
+					<label class="label lable--center">
+						VAT (%)
+						<input type="number" step="any" class="input input--width-small">
+					</label>
+
+					<label class="label lable--center">
+						Total
+						<output class="output">0</output>
+					</label>
+
+				</section>
+
+
+				<!-- Комментарий к созданным услугам -->
+
+				<label class="label">Comment
+					<input type="text" class="input">
+				</label>
+
+			</section>
+
+		</section>
+
+
+		<!-- Кнопка для запуска обработчки инвойса  -->
+
+		<button type="submit" class="button button--grey">CREATE INVOICE</button>
+
+	</form>
+
+	<script>
+
+		// Устанавливаем дату создания инвойса по умолчанию в форме:
+
+		document.querySelector('input[data-date-id="invoice-date"]').value = new Date().toISOString().split('T')[0];
+
+
+		// Устанавливаем обработчик для кнопки добавляющей новый элемент продукта в секции списка продуктов:
+
+		document.querySelector('[data-button-name="adding-product-element"]').addEventListener('click', () => {
+
+
+			// Находим все созданные элементы в листе продуктов:
+
+			const elements = document.querySelectorAll('[data-type="product"]');
+
+
+			// Получаем их id:
+
+			const pdoductElementArray = Array.from(elements)
+			const pdoductIdArray = pdoductElementArray.map(element => Number(element.dataset.productId));
+
+
+			// Получаем самый большой id:
+
+			const maxProductId = Math.max(...pdoductIdArray);
+
+
+			// Получаем элемент с максимальным ID:
+
+			const productElementWithMaxId = pdoductElementArray.find(element => element.dataset.productId == maxProductId);
+
+
+			// Клонируем элемен с максимальным id:
+
+			const clonedProductElement = productElementWithMaxId.cloneNode(true);
+
+
+			// Устанавливаем элементу слудующий id:
+
+			clonedProductElement.dataset.productId = maxProductId + 1;
+
+
+			// Добавляем клонированный элемент в форму
+
+			document.querySelector('[data-type="product-list"]').appendChild(clonedProductElement);
+
+
+			// прокурчиваем вниз к нововму добавленому продукту:
+
+			clonedProductElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
+
+		});
+
+
+		// Устанавливаем обработчик, который удаляет созданный элемент продукта по кнопке "delete":
+
+		document.querySelector('[data-type="product-list"]').addEventListener('click', (event) => {
+			if (event.target.dataset.buttonName === 'delete-product-element') { 
+				event.target.closest('[data-type="product"]').remove(); 
+			}
+		})
+
+	</script>
+</body>
+
+</html>
