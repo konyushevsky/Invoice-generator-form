@@ -92,6 +92,10 @@
 			width: 810px;
 		}
 
+		.end-column__calculation {
+			margin-top: auto;
+		}
+
 
 		/* Контрагет */
 
@@ -139,10 +143,10 @@
 
 		.product-list {
 			display: flex;
-			flex-direction: column;
 			gap: 36px;
+			flex-direction: column;
 			max-height: 237px;
-			overflow: scroll;
+			overflow-y: scroll;
 		}
 
 
@@ -161,10 +165,6 @@
 			justify-content: right;
 			gap: 36px;
 			overflow: hidden;
-		}
-
-		.end-column__calculation {
-			margin-top: auto;
 		}
 
 
@@ -285,7 +285,7 @@
 
 <body>
 
-	<form class="form">
+	<form class="form" name="invoice">
 
 
 		<!-- Заголовок иновойса -->
@@ -307,7 +307,7 @@
 
 				<label class="label">
 					Date (Сurrent by default)*
-					<input type="date" class="input input--width-large" data-date-id="invoice-date">
+					<input type="date" class="input input--width-large" data-type="invoice-date">
 				</label>
 
 
@@ -317,8 +317,7 @@
 
 					<label class="label">
 						From (Business Name)*
-						<select
-							class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
+						<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
 							<option selected disabled hidden></option>
 						</select>
 					</label>
@@ -328,23 +327,23 @@
 						<dt class="term">Full Address:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-vendor-type="address">17 ashdene rd</dd>
-						<dd class="details details--display-none" data-vendor-type="address">London, Hogvards Street
+						<dd class="details details--display-none" data-type="vendorAddress">17 ashdene rd</dd>
+						<dd class="details details--display-none" data-type="vendorAddress">London, Hogvards Street
 							11-11</dd>
 
 
 						<dt class="term">Phone Number:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-vendor-type="phone">+7801482145</dd>
-						<dd class="details details--display-none" data-vendor-type="phone">+7945623451</dd>
+						<dd class="details details--display-none" data-type="vendorPhone">+7801482145</dd>
+						<dd class="details details--display-none" data-type="vendorPhone">+7945623451</dd>
 
 
 						<dt class="term">Email:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-vendor-type="email">olyaevt23@gmail.com</dd>
-						<dd class="details details--display-none" data-vendor-type="email">flightpilates@gmail.com</dd>
+						<dd class="details details--display-none" data-type="vendorEmail">olyaevt23@gmail.com</dd>
+						<dd class="details details--display-none" data-type="vendorEmail">flightpilates@gmail.com</dd>
 
 					</dl>
 					<dl class="addition">
@@ -352,31 +351,30 @@
 						<dt class="term">Bank Name:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-vendor-bank-type="name">lloyds</dd>
-						<dd class="details details--display-none" data-vendor-bank-type="name">RF</dd>
+						<dd class="details details--display-none" data-type="vendorBankName">lloyds</dd>
+						<dd class="details details--display-none" data-type="vendorBankName">RF</dd>
 
 
 						<dt class="term">Sort Number:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-vendor-bank-type="sortNumber">30-99-08</dd>
-						<dd class="details details--display-none" data-vendor-bank-type="sortNumber">234553</dd>
+						<dd class="details details--display-none" data-type="vendorSortNumber">30-99-08</dd>
+						<dd class="details details--display-none" data-type="vendorSortNumber">234553</dd>
 
 
 						<dt class="term">Account Number:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-vendor-bank-type="accountNumber">21230660</dd>
-						<dd class="details details--display-none" data-vendor-bank-type="accountNumber">3233434222243
+						<dd class="details details--display-none" data-type="vendorAccountNumber">21230660</dd>
+						<dd class="details details--display-none" data-type="vendorAccountNumber">3233434222243
 						</dd>
 
 
 						<dt class="term">Alternative Method:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-vendor-bank-type="PayPal">17 ashdene rd</dd>
-						<dd class="details details--display-none" data-vendor-bank-type="Stripe">London, Hogvards Street
-							11-11</dd>
+						<dd class="details details--display-none" data-type="alternativeMethod">PayPal</dd>
+						<dd class="details details--display-none" data-type="alternativeMethod">Stripe</dd>
 
 					</dl>
 
@@ -389,8 +387,7 @@
 
 					<label class="label">
 						To (Full Name / Business Name)*
-						<select
-							class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
+						<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
 							<option selected disabled hidden></option>
 						</select>
 					</label>
@@ -400,23 +397,23 @@
 						<dt class="term">Full Address:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-buyer-type="address">Kopengagen, Street Pronto
+						<dd class="details details--display-none" data-type="buyerAddress">Kopengagen, Street Pronto
 							Avenu 14-10</dd>
-						<dd class="details details--display-none" data-buyer-type="address">London, Street Kratova Avenu
+						<dd class="details details--display-none" data-type="buyerAddress">London, Street Kratova Avenu
 							34-5</dd>
 
 						<dt class="term">Phone Number:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-buyer-type="phone">+32134422442</dd>
-						<dd class="details details--display-none" data-buyer-type="phone">+12343121446</dd>
+						<dd class="details details--display-none" data-type="buyerPhone">+32134422442</dd>
+						<dd class="details details--display-none" data-type="buyerPhone">+12343121446</dd>
 
 
 						<dt class="term">Email:</dt>
 						<dd class="details">⮑</dd>
 
-						<dd class="details details--display-none" data-buyer-type="email">kolyavarasev@gmail.com</dd>
-						<dd class="details details--display-none" data-buyer-type="email">AnnaSvaeva@gmail.com</dd>
+						<dd class="details details--display-none" data-type="buyerEmail">kolyavarasev@gmail.com</dd>
+						<dd class="details details--display-none" data-type="buyerEmail">AnnaSvaeva@gmail.com</dd>
 					</dl>
 
 				</section>
@@ -434,61 +431,59 @@
 				<section class="product-list" data-type="product-list">
 
 
-					<!-- Секция с продуктом -->
+					<!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "+" -->
 
-					<section class="product" data-type="product" data-product-id="0">
+					<template data-type="product-template">
 
-						<label class="label lable--center">
-							Product*
-							<select
-								class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden">
-								<option selected disabled hidden></option>
-							</select>
-						</label>
+						<section class="product" data-type="product">
 
-						<label class="label lable--center">
-							Date
-							<input type="date" class="input input--width-large">
-						</label>
+							<label class="label lable--center">
+								Product*
+								<select
+									class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden">
+									<option selected disabled hidden></option>
+								</select>
+							</label>
 
-						<label class="label lable--center">
-							QTO
-							<input type="number" class="input input--width-small">
-						</label>
+							<label class="label lable--center">
+								Date
+								<input type="date" class="input input--width-large">
+							</label>
 
-						<label class="label lable--center">
-							Price*
-							<input type="number" step="any" class="input input--width-medium">
-						</label>
+							<label class="label lable--center">
+								QTO
+								<input type="number" min="0" class="input input--width-small">
+							</label>
 
-						<label class="label lable--center">
-							Total
-							<output class="output">0</output>
-						</label>
+							<label class="label lable--center">
+								Price*
+								<input type="number" min="0" step="any" class="input input--width-medium">
+							</label>
 
-						<label class="label lable--center">
-							Delete
-							<button type="button" class="button button--light-grey button--font-dark-grey" data-button-name="delete-product-element">
-								⌫
-							</button>
-						</label>
+							<label class="label lable--center">
+								Total
+								<output class="output">0</output>
+							</label>
 
-					</section>
+							<label class="label lable--center">
+								Delete
+								<button type="button" class="button button--light-grey button--font-dark-grey"
+									data-type="product-element-delete-button">
+									⌫
+								</button>
+							</label>
+						</section>
+
+					</template>
 
 				</section>
 
 
 				<!-- Кнопка для cоздания новой продуктов -->
 
-				<button type="button" class="button button--light-grey" data-button-name="adding-product-element">
-					<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path
-							d="M0 8C0 7.44772 0.447715 7 1 7H15C15.5523 7 16 7.44772 16 8C16 8.55228 15.5523 9 15 9H1C0.447715 9 0 8.55228 0 8Z"
-							fill="#595757" />
-						<path
-							d="M8 0C8.55228 2.41411e-08 9 0.447715 9 1L9 15C9 15.5523 8.55228 16 8 16C7.44771 16 7 15.5523 7 15L7 1C7 0.447715 7.44772 -2.41411e-08 8 0Z"
-							fill="#595757" />
-					</svg>
+				<button type="button" class="button button--light-grey button--font-dark-grey "
+					data-type="product-element-adding-button">
+					Create Product
 				</button>
 
 
@@ -502,12 +497,12 @@
 					</label>
 
 					<label class="label lable--center">Discount (%)
-						<input type="number" step="any" class="input input--width-medium">
+						<input type="number" min="0" step="any" class="input input--width-medium">
 					</label>
 
 					<label class="label lable--center">
 						VAT (%)
-						<input type="number" step="any" class="input input--width-small">
+						<input type="number" min="0" step="any" class="input input--width-small">
 					</label>
 
 					<label class="label lable--center">
@@ -531,7 +526,7 @@
 
 		<!-- Кнопка для запуска обработчки инвойса  -->
 
-		<button type="submit" class="button button--grey">CREATE INVOICE</button>
+		<button type="submit" class="button button--grey">Create Invoice</button>
 
 	</form>
 
@@ -539,64 +534,51 @@
 
 		// Устанавливаем дату создания инвойса по умолчанию в форме:
 
-		document.querySelector('input[data-date-id="invoice-date"]').value = new Date().toISOString().split('T')[0];
+		document.querySelector('input[data-type="invoice-date"]').value = new Date().toISOString().split('T')[0];
 
 
-		// Устанавливаем обработчик для кнопки добавляющей новый элемент продукта в секции списка продуктов:
+		// Устанавливаем секцию с первым продуктом из щаблона для заполнения пользователем его атрибутов:
 
-		document.querySelector('[data-button-name="adding-product-element"]').addEventListener('click', () => {
+		const productElementTepmplate = document.querySelector('[data-type="product-template"]');
+		const productElementFragment = productElementTepmplate.content.cloneNode(true);
+		const productElement = productElementFragment.firstElementChild;
+		const productElementList = document.querySelector('[data-type="product-list"]')
 
-
-			// Находим все созданные элементы в листе продуктов:
-
-			const elements = document.querySelectorAll('[data-type="product"]');
-
-
-			// Получаем их id:
-
-			const pdoductElementArray = Array.from(elements)
-			const pdoductIdArray = pdoductElementArray.map(element => Number(element.dataset.productId));
+		productElementList.appendChild(productElement);
 
 
-			// Получаем самый большой id:
+		// Создаем единый обработчик события по методу делигирования в родительском элементе "form":
 
-			const maxProductId = Math.max(...pdoductIdArray);
+		document.forms.invoice.addEventListener('click', (event) => {
 
-
-			// Получаем элемент с максимальным ID:
-
-			const productElementWithMaxId = pdoductElementArray.find(element => element.dataset.productId == maxProductId);
+			switch (event.target.dataset.type) {
 
 
-			// Клонируем элемен с максимальным id:
+				// Создаем новый продукт при нажатии кнопки "Create Product" и промытываем секцию со списокм продуктов вниз:
 
-			const clonedProductElement = productElementWithMaxId.cloneNode(true);
+				case 'product-element-adding-button': {
 
+					const productElementFragment = productElementTepmplate.content.cloneNode(true);
+					const productElement = productElementFragment.firstElementChild;
+					productElementList.appendChild(productElement);
 
-			// Устанавливаем элементу слудующий id:
+					productElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
-			clonedProductElement.dataset.productId = maxProductId + 1;
-
-
-			// Добавляем клонированный элемент в форму
-
-			document.querySelector('[data-type="product-list"]').appendChild(clonedProductElement);
-
-
-			// прокурчиваем вниз к нововму добавленому продукту:
-
-			clonedProductElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
-
-		});
+					break;
+				}
 
 
-		// Устанавливаем обработчик, который удаляет созданный элемент продукта по кнопке "delete":
+				// Удаляем позицию продукта при нажатии кнопки "Del":
 
-		document.querySelector('[data-type="product-list"]').addEventListener('click', (event) => {
-			if (event.target.dataset.buttonName === 'delete-product-element') { 
-				event.target.closest('[data-type="product"]').remove(); 
+				case 'product-element-delete-button': {
+					
+					event.target.closest('[data-type="product"]').remove();
+
+					break;
+				}
 			}
 		})
+
 
 	</script>
 </body>
