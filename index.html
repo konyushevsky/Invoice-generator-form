@@ -321,7 +321,7 @@
 
 				<label class="label">
 					Date (Сurrent by default)*
-					<input type="date" class="input input--width-large" data-type="invoice-date">
+					<input type="date" class="input input--width-large" data-component-name="invoice-date">
 				</label>
 
 
@@ -342,23 +342,26 @@
 						<dt class="term">Full Address:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="vendorAddress">17 ashdene rd</dd>
-						<dd class="details details--display-none" data-type="vendorAddress">London, Hogvards Street
+						<dd class="details details--display-none" data-component-name="vendorAddress">17 ashdene rd</dd>
+						<dd class="details details--display-none" data-component-name="vendorAddress">London, Hogvards
+							Street
 							11-11</dd>
 
 
 						<dt class="term">Phone Number:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="vendorPhone">+7801482145</dd>
-						<dd class="details details--display-none" data-type="vendorPhone">+7945623451</dd>
+						<dd class="details details--display-none" data-component-name="vendorPhone">+7801482145</dd>
+						<dd class="details details--display-none" data-component-name="vendorPhone">+7945623451</dd>
 
 
 						<dt class="term">Email:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="vendorEmail">olyaevt23@gmail.com</dd>
-						<dd class="details details--display-none" data-type="vendorEmail">flightpilates@gmail.com</dd>
+						<dd class="details details--display-none" data-component-name="vendorEmail">olyaevt23@gmail.com
+						</dd>
+						<dd class="details details--display-none" data-component-name="vendorEmail">
+							flightpilates@gmail.com</dd>
 
 					</dl>
 					<dl class="addition">
@@ -366,30 +369,32 @@
 						<dt class="term">Bank Name:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="vendorBankName">lloyds</dd>
-						<dd class="details details--display-none" data-type="vendorBankName">RF</dd>
+						<dd class="details details--display-none" data-component-name="vendorBankName">lloyds</dd>
+						<dd class="details details--display-none" data-component-name="vendorBankName">RF</dd>
 
 
 						<dt class="term">Sort Number:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="vendorSortNumber">30-99-08</dd>
-						<dd class="details details--display-none" data-type="vendorSortNumber">234553</dd>
+						<dd class="details details--display-none" data-component-name="vendorSortNumber">30-99-08</dd>
+						<dd class="details details--display-none" data-component-name="vendorSortNumber">234553</dd>
 
 
 						<dt class="term">Account Number:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="vendorAccountNumber">21230660</dd>
-						<dd class="details details--display-none" data-type="vendorAccountNumber">3233434222243
+						<dd class="details details--display-none" data-component-name="vendorAccountNumber">21230660
+						</dd>
+						<dd class="details details--display-none" data-component-name="vendorAccountNumber">
+							3233434222243
 						</dd>
 
 
 						<dt class="term">Alternative Method:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="alternativeMethod">PayPal</dd>
-						<dd class="details details--display-none" data-type="alternativeMethod">Stripe</dd>
+						<dd class="details details--display-none" data-component-name="alternativeMethod">PayPal</dd>
+						<dd class="details details--display-none" data-component-name="alternativeMethod">Stripe</dd>
 
 					</dl>
 
@@ -413,23 +418,27 @@
 						<dt class="term">Full Address:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="buyerAddress">Kopengagen, Street Pronto
+						<dd class="details details--display-none" data-component-name="buyerAddress">Kopengagen, Street
+							Pronto
 							Avenu 14-10</dd>
-						<dd class="details details--display-none" data-type="buyerAddress">London, Street Kratova Avenu
+						<dd class="details details--display-none" data-component-name="buyerAddress">London, Street
+							Kratova Avenu
 							34-5</dd>
 
 						<dt class="term">Phone Number:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="buyerPhone">+32134422442</dd>
-						<dd class="details details--display-none" data-type="buyerPhone">+12343121446</dd>
+						<dd class="details details--display-none" data-component-name="buyerPhone">+32134422442</dd>
+						<dd class="details details--display-none" data-component-name="buyerPhone">+12343121446</dd>
 
 
 						<dt class="term">Email:</dt>
 						<dd class="details">➥</dd>
 
-						<dd class="details details--display-none" data-type="buyerEmail">kolyavarasev@gmail.com</dd>
-						<dd class="details details--display-none" data-type="buyerEmail">AnnaSvaeva@gmail.com</dd>
+						<dd class="details details--display-none" data-component-name="buyerEmail">
+							kolyavarasev@gmail.com</dd>
+						<dd class="details details--display-none" data-component-name="buyerEmail">AnnaSvaeva@gmail.com
+						</dd>
 					</dl>
 
 				</section>
@@ -449,14 +458,14 @@
 
 					<!-- Секция со списком продуктов  -->
 
-					<section class="product-list product-list--empty" data-type="product-list">
+					<section class="product-list product-list--empty" data-component-name="product-list">
 
 
 						<!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
 
-						<template data-type="product-template">
+						<template data-component-name="product-template">
 
-							<section class="product" data-type="product">
+							<section class="product" data-component-name="product">
 
 								<label class="label lable--center">
 									Product*
@@ -471,25 +480,27 @@
 									<input type="date" class="input input--width-large">
 								</label>
 
-								<label class="label lable--center" data-type="product-quantity">
+								<label class="label lable--center">
 									QTO
-									<input type="number" min="0" class="input input--width-small">
+									<input type="number" min="0" step="1" class="input input--width-small"
+										data-component-name="product-quantity">
 								</label>
 
-								<label class="label lable--center" data-type="product-price">
+								<label class="label lable--center">
 									Price*
-									<input type="number" min="0" step="any" class="input input--width-medium">
+									<input type="number" min="0" step="any" class="input input--width-medium"
+										data-component-name="product-price">
 								</label>
 
-								<label class="label lable--center" data-type="one-product-total">
+								<label class="label lable--center">
 									Total
-									<output class="output">0</output>
+									<output class="output" data-component-name="product-total">0</output>
 								</label>
 
 								<label class="label lable--center">
 									Delete
 									<button type="button" class="button button--light-grey button--font-dark-grey"
-										data-type="product-element-delete-button">
+										data-component-name="product-element-delete-button">
 										⌫
 									</button>
 								</label>
@@ -503,7 +514,7 @@
 					<!-- Кнопка для cоздания новой продуктов -->
 
 					<button type="button" class="button button--light-grey button--font-dark-grey "
-						data-type="product-element-adding-button">
+						data-component-name="product-element-adding-button">
 						Create Product
 					</button>
 
@@ -516,21 +527,23 @@
 
 					<label class="label lable--center">
 						Subtotal
-						<output class="output subtotal--input">0</output>
+						<output class="output subtotal--input" data-component-name="subtotal">0</output>
 					</label>
 
 					<label class="label lable--center">Discount (%)
-						<input type="number" min="0" step="any" class="input input--width-medium">
+						<input type="number" min="0" step="any" class="input input--width-medium"
+							data-component-name="discount">
 					</label>
 
 					<label class="label lable--center">
 						VAT (%)
-						<input type="number" min="0" step="any" class="input input--width-small">
+						<input type="number" min="0" step="any" class="input input--width-small"
+							data-component-name="vat">
 					</label>
 
 					<label class="label lable--center">
 						Total
-						<output class="output">0</output>
+						<output class="output" data-component-name="total-amount">0</output>
 					</label>
 
 				</section>
@@ -539,7 +552,7 @@
 				<!-- Комментарий к созданным услугам -->
 
 				<label class="label">Comment
-					<input type="text" class="input">
+					<input type="text" class="input" data-component-name="comment">
 				</label>
 
 			</section>
@@ -557,15 +570,15 @@
 
 		// Устанавливаем дату создания инвойса по умолчанию в форме:
 
-		document.querySelector('input[data-type="invoice-date"]').value = new Date().toISOString().split('T')[0];
+		document.querySelector('input[data-component-name="invoice-date"]').value = new Date().toISOString().split('T')[0];
 
 
 		// Устанавливаем секцию с первым продуктом из щаблона для заполнения пользователем его атрибутов:
 
-		const productElementTepmplate = document.querySelector('[data-type="product-template"]');
+		const productElementTepmplate = document.querySelector('[data-component-name="product-template"]');
 		const productElementFragment = productElementTepmplate.content.cloneNode(true);
 		const productElement = productElementFragment.firstElementChild;
-		const productElementList = document.querySelector('[data-type="product-list"]')
+		const productElementList = document.querySelector('[data-component-name="product-list"]')
 
 		productElementList.appendChild(productElement);
 
@@ -575,27 +588,35 @@
 		['click', 'input'].forEach(eventType => document.forms.invoice.addEventListener(eventType, handle));
 
 
-		// Создаем функцию как единый обработчик событий:
+		// Создаем функцию, которая будет вызываться на корневом элементе, обрабатывая все события потомков корневого элемента:
 
 		function handle(event) {
 
-			// Определяем тип события для дополнительной проверке при его испольнении:
 
-			const evntType = event.target.type;
+			// Определяем тип события и название компанента, на котором вызвано это событие:
 
-
-			// Обрабытываем все события в форме по типу элемента, заданно в html с помощью атрибута data-*: 
-
-			switch (event.target.dataset.type) {
+			const eventType = event.type;
+			const incomingStreamComponentName = event.target.dataset.componentName;
 
 
-				// Создаем новeю позицию продукта из шаблона в html, при нажатии кнопки "Create Product" и проматываем секцию со списокм продуктов вниз:
+			// Обрабытываем все входящие события на компонентах, меняя в ответ соответствующие им исходящие компоненты: 
 
-				case 'product-element-adding-button' && evntType == 'click': {
+			switch (true) {
+
+
+				// Обрабатываем нажатие кнопки "Create Product":
+
+				case (eventType == 'click' && incomingStreamComponentName == 'product-element-adding-button'): {
+
+
+					// Создаем новую элемент отдельного продукта из шаблона в html:
 
 					const productElementFragment = productElementTepmplate.content.cloneNode(true);
 					const productElement = productElementFragment.firstElementChild;
 					productElementList.appendChild(productElement);
+
+
+					// Проматываем созданный продукт вниз, чтобы его отобразаить, в случае переполнения списка продуктов:
 
 					productElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
@@ -603,31 +624,215 @@
 				}
 
 
-				// Удаляем позицию продукта при нажатии кнопки "Del":
+				// Обрабатываем нажатие кнопки в поле "Del" (уникальный компонент):
 
-				case 'product-element-delete-button' && evntType == 'click': {
+				case (eventType == 'click' && incomingStreamComponentName == 'product-element-delete-button'): {
 
-					event.target.closest('[data-type="product"]').remove();
+
+					// Удаляем позицию продукта на которой была нажата кнопка в поле "Del":
+
+					event.target.closest('[data-component-name="product"]').remove();
+
+
+					// Пересчитываем общую сумму позиции для всех элементов в поле "Subtotal":
+
+					document.querySelector('[data-component-name="subtotal"]').textContent = getSubtotat().toFixed(2);
+
+
+					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total":
+
+					const discount = document.querySelector('[data-component-name="discount"]').value;
+					const vat = document.querySelector('[data-component-name="vat"]').value;
+					const subtotal = getSubtotat();
+
+					document.querySelector('[data-component-name="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
 
 
-				// Обрабатываем ввод количества предоставляемых продуктов в рамках динамически созданной позиции проудкта: 
+				// Обрабатываем ввод для поля "QTO" (динамически созданной компонент): 
 
-				case 'product-quantity' && evntType == 'input': {
+				case (eventType == 'input' && incomingStreamComponentName == 'product-quantity'): {
 
-					// Получаем количество продукта введенное контрагентом:
-					
-					
-					event.target.e
 
+					// Устаналвивае сумму позиции для одного элемента в поле "Total":
+
+					const productQuantityElement = event.target;
+					const productElement = productQuantityElement.closest('[data-component-name="product"]')
+					productElement.querySelector('[data-component-name="product-total"]').textContent = getOneProductTotal(productElement, productQuantityElement).toFixed(2);
+
+
+					// Устаналвивае общую сумму позиции для всех элементов в поле "Subtotal":
+
+					const subtotal = getSubtotat();
+					document.querySelector('[data-component-name="subtotal"]').textContent = subtotal.toFixed(2);
+
+
+					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total":
+
+					const discount = document.querySelector('[data-component-name="discount"]').value;
+					const vat = document.querySelector('[data-component-name="vat"]').value;
+
+					document.querySelector('[data-component-name="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
+
+
+				// Обрабатываем ввод для поля "Price" (динамически созданной компонент): 
+
+				case (eventType == 'input' && incomingStreamComponentName == 'product-price'): {
+
+
+					// Устаналвивае сумму позиции для одного элемента в поле "Total":
+
+					const productPriceElement = event.target;
+					const productElement = productPriceElement.closest('[data-component-name="product"]')
+					productElement.querySelector('[data-component-name="product-total"]').textContent = getOneProductTotal(productElement, productPriceElement).toFixed(2);
+
+
+					// Устаналвивае общую сумму позиции для всех элементов в поле "Subtotal":
+
+					const subtotal = getSubtotat();
+					document.querySelector('[data-component-name="subtotal"]').textContent = subtotal.toFixed(2);
+
+
+					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total":
+
+					const discount = document.querySelector('[data-component-name="discount"]').value;
+					const vat = document.querySelector('[data-component-name="vat"]').value;
+
+					document.querySelector('[data-component-name="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+
+					break;
+				}
+
+
+				// Обрабатываем ввод поля "Discount" (уникальный компонент):
+
+				case (eventType == 'input' && incomingStreamComponentName == 'discount'): {
+
+
+					// Получаем процент дисконта общий для всех продуктов:
+
+					const discount = event.target.value;
+
+
+					// Получаем общую сумму позиции для всех элементов в поле "Subtotal":
+
+					const subtotal = getSubtotat();
+
+
+					// Получаем процент VAT:
+
+					const vat = document.querySelector('[data-component-name="vat"]').value;
+
+
+					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total" с учетом дисконта и ват:
+
+					document.querySelector('[data-component-name="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+
+					break;
+				}
+
+
+				// Обрабатываем ввод поля "VAT" (уникальный компонент):
+
+				case (eventType == 'input' && incomingStreamComponentName == 'vat'): {
+
+
+					// Получаем  процент VAT общй для всех продуктов::
+
+					const vat = event.target.value;
+
+
+					// Получаем общую сумму позиции для всех элементов в поле "Subtotal":
+
+					const subtotal = getSubtotat();
+
+
+					// Получаем процент дискнота:
+
+					const discount = document.querySelector('[data-component-name="discount"]').value;
+
+
+					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total" с учетом дисконта и ват:
+
+					document.querySelector('[data-component-name="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+
+					break;
+
+				}
+
 			}
 		}
 
+		// Создаем функцию для подсчета прмежуточной сумммы для одного продукта:
+
+		function getOneProductTotal(productElement, productContributeElement) {
+
+
+			// Идентифицируем какой из двух элементов нам передан:
+
+			const incomingStreamComponentName = productContributeElement.dataset.incomingStreamComponentName;
+
+
+			// Получаем количество продукта:
+
+			const productQuantity = incomingStreamComponentName == 'product-quantity' ?
+				productContributeElement.value :
+				productElement.querySelector('[data-component-name="product-quantity"]').value;
+
+
+			// Получаем стоимость продукта:
+
+			const productPrice = incomingStreamComponentName == 'product-price' ?
+				productContributeElement.value :
+				productElement.querySelector('[data-component-name="product-price"]').value;
+
+
+			// Возвращаем результат с учетом того, что для количества по умолчанию единица, округлив его до двух знаков в виде строки:
+
+			return ((productQuantity === '' ? 1 : productQuantity) * (productPrice === '' ? 0 : productPrice))
+
+		}
+
+
+		// Создаем функцию для подсчета промежуточной суммы по всем продуктам для поля "Subtotal":
+
+		function getSubtotat() {
+
+			const allProductElements = document.querySelectorAll('[data-component-name="product"]');
+			const allProductElementArray = Array.from(allProductElements);
+			const generalSubtotal = allProductElementArray.reduce((sum, productElement) => {
+
+
+				// Получаем количество в рамках одного продуктов:
+
+				const productQuantity = productElement.querySelector('[data-component-name="product-quantity"]').value;
+
+
+				// Получаем стоимость в рамках одного продукта:
+
+				const productPrice = productElement.querySelector('[data-component-name="product-price"]').value;
+
+
+				// Возвращаем сумму:
+
+				return sum + (productQuantity === '' ? 1 : productQuantity) * (productPrice === '' ? 0 : productPrice)
+
+			}, 0)
+
+			return generalSubtotal;
+		}
+
+
+		// Создаем функцию, которая считает общую сумму:
+
+		function getAllProductTotal(discount, vat, subtotal) {
+			return subtotal - subtotal * (discount / 100) + (subtotal - subtotal * (discount / 100)) * (vat / 100);
+		}
 
 	</script>
 </body>
