@@ -57,19 +57,19 @@
 			background-color: var(--white-color);
 		}
 
+		.form__title {
+			margin: 0;
+			top: 64px;
+			left: 64px;
+			position: absolute;
+		}
+
 
 		/* Заголовок */
 
 		.title {
 			font: normal var(--h1-font-size) Arial, sans-serif;
 			color: var(--dark-grey-color);
-		}
-
-		.form__title {
-			margin: 0;
-			top: 64px;
-			left: 64px;
-			position: absolute;
 		}
 
 
@@ -139,14 +139,27 @@
 		}
 
 
-		/* Список */
+		/* Секция с продуктами */
+
+		.product-area {
+			display: flex;
+			flex-direction: column;
+			gap: 36px;
+		}
+
+
+		/* Список продуктов */
 
 		.product-list {
 			display: flex;
-			gap: 36px;
 			flex-direction: column;
-			max-height: 237px;
+			gap: 36px;
+			max-height: 234px;
 			overflow-y: scroll;
+		}
+
+		.product-list--empty:has(template:only-child) {
+			display: none;
 		}
 
 
@@ -181,6 +194,7 @@
 			color: var(--white-color);
 			font: normal var(--typesetting-font-size) sans-serif;
 		}
+
 
 		.button--grey {
 			background-color: var(--grey-color);
@@ -317,15 +331,16 @@
 
 					<label class="label">
 						From (Business Name)*
-						<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
-							<option selected disabled hidden></option>
+						<select
+							class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
+							<option selected hidden></option>
 						</select>
 					</label>
 
 					<dl class="addition">
 
 						<dt class="term">Full Address:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="vendorAddress">17 ashdene rd</dd>
 						<dd class="details details--display-none" data-type="vendorAddress">London, Hogvards Street
@@ -333,14 +348,14 @@
 
 
 						<dt class="term">Phone Number:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="vendorPhone">+7801482145</dd>
 						<dd class="details details--display-none" data-type="vendorPhone">+7945623451</dd>
 
 
 						<dt class="term">Email:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="vendorEmail">olyaevt23@gmail.com</dd>
 						<dd class="details details--display-none" data-type="vendorEmail">flightpilates@gmail.com</dd>
@@ -349,21 +364,21 @@
 					<dl class="addition">
 
 						<dt class="term">Bank Name:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="vendorBankName">lloyds</dd>
 						<dd class="details details--display-none" data-type="vendorBankName">RF</dd>
 
 
 						<dt class="term">Sort Number:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="vendorSortNumber">30-99-08</dd>
 						<dd class="details details--display-none" data-type="vendorSortNumber">234553</dd>
 
 
 						<dt class="term">Account Number:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="vendorAccountNumber">21230660</dd>
 						<dd class="details details--display-none" data-type="vendorAccountNumber">3233434222243
@@ -371,7 +386,7 @@
 
 
 						<dt class="term">Alternative Method:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="alternativeMethod">PayPal</dd>
 						<dd class="details details--display-none" data-type="alternativeMethod">Stripe</dd>
@@ -387,15 +402,16 @@
 
 					<label class="label">
 						To (Full Name / Business Name)*
-						<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
-							<option selected disabled hidden></option>
+						<select
+							class="input input--appearance-none input--background-corner-drawn input--overflow-hidden">
+							<option selected hidden></option>
 						</select>
 					</label>
 
 					<dl class="addition">
 
 						<dt class="term">Full Address:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="buyerAddress">Kopengagen, Street Pronto
 							Avenu 14-10</dd>
@@ -403,14 +419,14 @@
 							34-5</dd>
 
 						<dt class="term">Phone Number:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="buyerPhone">+32134422442</dd>
 						<dd class="details details--display-none" data-type="buyerPhone">+12343121446</dd>
 
 
 						<dt class="term">Email:</dt>
-						<dd class="details">⮑</dd>
+						<dd class="details">➥</dd>
 
 						<dd class="details details--display-none" data-type="buyerEmail">kolyavarasev@gmail.com</dd>
 						<dd class="details details--display-none" data-type="buyerEmail">AnnaSvaeva@gmail.com</dd>
@@ -426,65 +442,72 @@
 			<section class="end-column">
 
 
-				<!-- Секция со списком продуктов -->
+				<!-- Секция в которой генерируются позиции продуктов -->
 
-				<section class="product-list" data-type="product-list">
+				<section class="product-area">
 
 
-					<!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "+" -->
+					<!-- Секция со списком продуктов  -->
 
-					<template data-type="product-template">
+					<section class="product-list product-list--empty" data-type="product-list">
 
-						<section class="product" data-type="product">
 
-							<label class="label lable--center">
-								Product*
-								<select
-									class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden">
-									<option selected disabled hidden></option>
-								</select>
-							</label>
+						<!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
 
-							<label class="label lable--center">
-								Date
-								<input type="date" class="input input--width-large">
-							</label>
+						<template data-type="product-template">
 
-							<label class="label lable--center">
-								QTO
-								<input type="number" min="0" class="input input--width-small">
-							</label>
+							<section class="product" data-type="product">
 
-							<label class="label lable--center">
-								Price*
-								<input type="number" min="0" step="any" class="input input--width-medium">
-							</label>
+								<label class="label lable--center">
+									Product*
+									<select
+										class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden">
+										<option selected disabled hidden></option>
+									</select>
+								</label>
 
-							<label class="label lable--center">
-								Total
-								<output class="output">0</output>
-							</label>
+								<label class="label lable--center">
+									Date
+									<input type="date" class="input input--width-large">
+								</label>
 
-							<label class="label lable--center">
-								Delete
-								<button type="button" class="button button--light-grey button--font-dark-grey"
-									data-type="product-element-delete-button">
-									⌫
-								</button>
-							</label>
-						</section>
+								<label class="label lable--center" data-type="product-quantity">
+									QTO
+									<input type="number" min="0" class="input input--width-small">
+								</label>
 
-					</template>
+								<label class="label lable--center" data-type="product-price">
+									Price*
+									<input type="number" min="0" step="any" class="input input--width-medium">
+								</label>
+
+								<label class="label lable--center" data-type="one-product-total">
+									Total
+									<output class="output">0</output>
+								</label>
+
+								<label class="label lable--center">
+									Delete
+									<button type="button" class="button button--light-grey button--font-dark-grey"
+										data-type="product-element-delete-button">
+										⌫
+									</button>
+								</label>
+							</section>
+
+						</template>
+
+					</section>
+
+
+					<!-- Кнопка для cоздания новой продуктов -->
+
+					<button type="button" class="button button--light-grey button--font-dark-grey "
+						data-type="product-element-adding-button">
+						Create Product
+					</button>
 
 				</section>
-
-
-				<!-- Кнопка для cоздания новой продуктов -->
-
-				<button type="button" class="button button--light-grey button--font-dark-grey "
-					data-type="product-element-adding-button">
-					Create Product
-				</button>
 
 
 				<!-- Подраздел с вычислением итогов по услугам -->
@@ -547,16 +570,28 @@
 		productElementList.appendChild(productElement);
 
 
-		// Создаем единый обработчик события по методу делигирования в родительском элементе "form":
+		// Подписываем корневой элемент на основные события:
 
-		document.forms.invoice.addEventListener('click', (event) => {
+		['click', 'input'].forEach(eventType => document.forms.invoice.addEventListener(eventType, handle));
+
+
+		// Создаем функцию как единый обработчик событий:
+
+		function handle(event) {
+
+			// Определяем тип события для дополнительной проверке при его испольнении:
+
+			const evntType = event.target.type;
+
+
+			// Обрабытываем все события в форме по типу элемента, заданно в html с помощью атрибута data-*: 
 
 			switch (event.target.dataset.type) {
 
 
-				// Создаем новый продукт при нажатии кнопки "Create Product" и промытываем секцию со списокм продуктов вниз:
+				// Создаем новeю позицию продукта из шаблона в html, при нажатии кнопки "Create Product" и проматываем секцию со списокм продуктов вниз:
 
-				case 'product-element-adding-button': {
+				case 'product-element-adding-button' && evntType == 'click': {
 
 					const productElementFragment = productElementTepmplate.content.cloneNode(true);
 					const productElement = productElementFragment.firstElementChild;
@@ -570,14 +605,28 @@
 
 				// Удаляем позицию продукта при нажатии кнопки "Del":
 
-				case 'product-element-delete-button': {
-					
+				case 'product-element-delete-button' && evntType == 'click': {
+
 					event.target.closest('[data-type="product"]').remove();
 
 					break;
 				}
+
+
+				// Обрабатываем ввод количества предоставляемых продуктов в рамках динамически созданной позиции проудкта: 
+
+				case 'product-quantity' && evntType == 'input': {
+
+					// Получаем количество продукта введенное контрагентом:
+					
+					
+					event.target.e
+
+
+					break;
+				}
 			}
-		})
+		}
 
 
 	</script>
