@@ -280,6 +280,11 @@
 			background-size: 18px;
 		}
 
+		.input--cut-down {
+			padding-right: 16px;
+			text-overflow: ellipsis;
+		}
+
 
 		/* Поле вывода */
 
@@ -407,7 +412,7 @@
 
 					<label class="label">
 						To (Full Name / Business Name)*
-						<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden"
+						<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden input--cut-down"
 							data-element-type="customer">
 
 							<option selected></option>
@@ -477,7 +482,7 @@
 								<label class="label lable--center">
 									Product*
 									<select
-										class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden">
+										class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down">
 										<option selected></option>
 										<option>teaching</option>
 										<option>private class (hire)</option>
