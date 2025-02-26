@@ -15,7 +15,7 @@
 			--hover-grey-color: #454343;
 			--light-grey-color: #E5E5E5;
 			--hover-light-grey-color: #DDDDDD;
-			--white-color: #FFFFFF;
+			--white-color: #ffffff;
 
 			--h1-font-size: 21px;
 			--typesetting-font-size: 14px;
@@ -33,15 +33,6 @@
 		}
 
 
-
-		/* Содержимое */
-
-		.content {
-			display: flex;
-			gap: 64px;
-		}
-
-
 		/* Форма */
 
 		.form {
@@ -51,7 +42,7 @@
 			flex-direction: column;
 			gap: 44px;
 			width: 1435px;
-			height: 782px;
+			height: 779px;
 			border-radius: 36px;
 			padding: 133px 64px 64px 64px;
 			background-color: var(--white-color);
@@ -65,6 +56,19 @@
 		}
 
 
+		/* Содержимое */
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			flex-wrap: wrap;
+			align-content: space-between;
+			gap: 36px;
+			height: 512px;
+		}
+
+
+
 		/* Заголовок */
 
 		.title {
@@ -73,24 +77,7 @@
 		}
 
 
-		/* Стартовая колонка */
-
-		.start-column {
-			display: flex;
-			flex-direction: column;
-			gap: 36px;
-			width: 433px;
-		}
-
-
-		/* Конечная колонка*/
-
-		.end-column {
-			display: flex;
-			flex-direction: column;
-			gap: 36px;
-			width: 810px;
-		}
+		/* Дата инвойса */
 
 		.end-column__calculation {
 			margin-top: auto;
@@ -143,6 +130,7 @@
 		/* Секция с продуктами */
 
 		.product-area {
+			width: 810px;
 			display: flex;
 			flex-direction: column;
 			gap: 36px;
@@ -318,258 +306,247 @@
 		<section class="content">
 
 
-			<!-- Раздел с общими данными инвойса (дата, подрядчик и заказчик) -->
+			<!-- Подраздел с вводом даты создания/обновления инвойса (по умолчанию текущая) -->
 
-			<section class="start-column">
+			<label class="label">
+				Date (Сurrent by default)*
+				<input type="date" class="input input--width-large" data-element-type="invoice-date">
+			</label>
 
 
-				<!-- Подраздел с вводом даты создания/обновления инвойса (по умолчанию текущая) -->
+			<!-- Подраздел с инофрмацией о подрядчике -->
+
+			<section class="counterparty">
 
 				<label class="label">
-					Date (Сurrent by default)*
-					<input type="date" class="input input--width-large" data-element-type="invoice-date">
+					From (Business Name)*
+					<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden"
+						data-element-type="contractor">
+						<option selected></option>
+						<option>Gera Evtukhova</option>
+						<option>Flight Pilates</option>
+					</select>
 				</label>
 
+				<dl class="addition">
 
-				<!-- Подраздел с инофрмацией о подрядчике -->
+					<dt class="term">Full Address:</dt>
 
-				<section class="counterparty">
-
-					<label class="label">
-						From (Business Name)*
-						<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden"
-							data-element-type="contractor">
-							<option selected></option>
-							<option>Gera Evtukhova</option>
-							<option>Flight Pilates</option>
-						</select>
-					</label>
-
-					<dl class="addition">
-
-						<dt class="term">Full Address:</dt>
-
-						<dd class="details" data-element-type="contractor-address">➥</dd>
-						<dd class="details details--display-none" data-element-type="contractor-address">17 ashdene rd</dd>
-						<dd class="details details--display-none" data-element-type="contractor-address">London, Hogvards
-							Street11-11
-						</dd>
+					<dd class="details" data-element-type="contractor-address">➥</dd>
+					<dd class="details details--display-none" data-element-type="contractor-address">17 ashdene rd</dd>
+					<dd class="details details--display-none" data-element-type="contractor-address">London, Hogvards
+						Street11-11
+					</dd>
 
 
-						<dt class="term">Phone Number:</dt>
+					<dt class="term">Phone Number:</dt>
 
-						<dd class="details" data-element-type="contractor-phone">➥</dd>
-						<dd class="details details--display-none" data-element-type="contractor-phone">+7801482145</dd>
-						<dd class="details details--display-none" data-element-type="contractor-phone">+7945623451</dd>
-
-
-						<dt class="term">Email:</dt>
-
-						<dd class="details" data-element-type="contractor-email">➥</dd>
-						<dd class="details details--display-none" data-element-type="contractor-email">olyaevt23@gmail.com</dd>
-						<dd class="details details--display-none" data-element-type="contractor-email">flightpilates@gmail.com</dd>
-
-					</dl>
+					<dd class="details" data-element-type="contractor-phone">➥</dd>
+					<dd class="details details--display-none" data-element-type="contractor-phone">+7801482145</dd>
+					<dd class="details details--display-none" data-element-type="contractor-phone">+7945623451</dd>
 
 
-					<dl class="addition">
+					<dt class="term">Email:</dt>
 
-						<dt class="term">Bank Name:</dt>
+					<dd class="details" data-element-type="contractor-email">➥</dd>
+					<dd class="details details--display-none" data-element-type="contractor-email">olyaevt23@gmail.com</dd>
+					<dd class="details details--display-none" data-element-type="contractor-email">flightpilates@gmail.com</dd>
 
-						<dd class="details" data-element-type="contractor-bank-name">➥</dd>
-						<dd class="details details--display-none" data-element-type="contractor-bank-name">lloyds</dd>
-						<dd class="details details--display-none" data-element-type="contractor-bank-name">RF</dd>
-
-
-						<dt class="term">Sort Number:</dt>
-
-						<dd class="details" data-element-type="contractor-sort-number">➥</dd>
-						<dd class="details details--display-none" data-element-type="contractor-sort-number">30-99-08</dd>
-						<dd class="details details--display-none" data-element-type="contractor-sort-number">234553</dd>
+				</dl>
 
 
-						<dt class="term">Account Number:</dt>
+				<dl class="addition">
 
-						<dd class="details" data-element-type="contractor-account-number">➥</dd>
-						<dd class="details details--display-none" data-element-type="contractor-account-number">21230660</dd>
-						<dd class="details details--display-none" data-element-type="contractor-account-number">3233434222243</dd>
+					<dt class="term">Bank Name:</dt>
 
-
-						<dt class="term">Alternative Method:</dt>
-
-						<dd class="details" data-element-type="contractor-alternative-method">➥</dd>
-						<dd class="details details--display-none" data-element-type="contractor-alternative-method">PayPal</dd>
-						<dd class="details details--display-none" data-element-type="contractor-alternative-method">Stripe</dd>
-
-					</dl>
-
-				</section>
+					<dd class="details" data-element-type="contractor-bank-name">➥</dd>
+					<dd class="details details--display-none" data-element-type="contractor-bank-name">lloyds</dd>
+					<dd class="details details--display-none" data-element-type="contractor-bank-name">RF</dd>
 
 
-				<!-- Подраздел с информацией о заказчике -->
+					<dt class="term">Sort Number:</dt>
 
-				<section class="counterparty">
-
-					<label class="label">
-						To (Full Name / Business Name)*
-						<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden input--cut-down"
-							data-element-type="customer">
-
-							<option selected></option>
-							<option>Aerialactive</option>
-							<option>Kolya Hverasev</option>
-							<option>Anna Svaeva</option>
-
-						</select>
-					</label>
-
-					<dl class="addition">
+					<dd class="details" data-element-type="contractor-sort-number">➥</dd>
+					<dd class="details details--display-none" data-element-type="contractor-sort-number">30-99-08</dd>
+					<dd class="details details--display-none" data-element-type="contractor-sort-number">234553</dd>
 
 
-						<dt class="term">Full Address:</dt>
+					<dt class="term">Account Number:</dt>
 
-						<dd class="details" data-element-type="customer-address">➥</dd>
-						<dd class="details details--display-none" data-element-type="customer-address">15 harwood rd</dd>
-						<dd class="details details--display-none" data-element-type="customer-address">Kopengagen, Street Pronto
-							Avenu 14-10</dd>
-						<dd class="details details--display-none" data-element-type="customer-address">London, Street Kratova Avenu
-							34-5</dd>
+					<dd class="details" data-element-type="contractor-account-number">➥</dd>
+					<dd class="details details--display-none" data-element-type="contractor-account-number">21230660</dd>
+					<dd class="details details--display-none" data-element-type="contractor-account-number">3233434222243</dd>
 
 
-						<dt class="term">Phone Number:</dt>
+					<dt class="term">Alternative Method:</dt>
 
-						<dd class="details" data-element-type="customer-phone">➥</dd>
-						<dd class="details details--display-none" data-element-type="customer-phone">+7984341476</dd>
-						<dd class="details details--display-none" data-element-type="customer-phone">+32134422442</dd>
-						<dd class="details details--display-none" data-element-type="customer-phone">+12343121446</dd>
+					<dd class="details" data-element-type="contractor-alternative-method">➥</dd>
+					<dd class="details details--display-none" data-element-type="contractor-alternative-method">PayPal</dd>
+					<dd class="details details--display-none" data-element-type="contractor-alternative-method">Stripe</dd>
 
-
-						<dt class="term">Email:</dt>
-
-						<dd class="details" data-element-type="customer-email">➥</dd>
-						<dd class="details details--display-none" data-element-type="customer-email">aerialfitness@aol.com</dd>
-						<dd class="details details--display-none" data-element-type="customer-email">kolyavarasev@gmail.com</dd>
-						<dd class="details details--display-none" data-element-type="customer-email">AnnaSvaeva@gmail.com</dd>
-
-					</dl>
-
-				</section>
+				</dl>
 
 			</section>
 
 
-			<!-- Раздел с товарами (перечисление и калькуляция, а так же комментарий по добавленным товарам) -->
+			<!-- Подраздел с информацией о заказчике -->
 
-			<section class="end-column">
+			<section class="counterparty">
 
+				<label class="label">
+					To (Full Name / Business Name)*
+					<select
+						class="input input--appearance-none input--background-corner-drawn input--overflow-hidden input--cut-down"
+						data-element-type="customer">
 
-				<!-- Секция в которой генерируются позиции продуктов -->
+						<option selected></option>
+						<option>Aerialactive</option>
+						<option>Kolya Hverasev</option>
+						<option>Anna Svaeva</option>
 
-				<section class="product-area">
+					</select>
+				</label>
 
-
-					<!-- Секция со списком продуктов  -->
-
-					<section class="product-list product-list--empty" data-element-type="product-list">
-
-
-						<!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
-
-						<template data-element-type="product-template">
-
-							<section class="product" data-element-type="product">
-
-								<label class="label lable--center">
-									Product*
-									<select
-										class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down">
-										<option selected></option>
-										<option>teaching</option>
-										<option>private class (hire)</option>
-										<option>Teaching of airdancing with pole</option>
-										<option>Consultation</option>
-									</select>
-								</label>
-
-								<label class="label lable--center">
-									Date
-									<input type="date" class="input input--width-large">
-								</label>
-
-								<label class="label lable--center">
-									QTO
-									<input type="number" min="0" step="1" class="input input--width-small"
-										data-element-type="product-quantity">
-								</label>
-
-								<label class="label lable--center">
-									Price*
-									<input type="number" min="0" step="any" class="input input--width-medium"
-										data-element-type="product-price">
-								</label>
-
-								<label class="label lable--center">
-									Total
-									<output class="output" data-element-type="product-total">0</output>
-								</label>
-
-								<label class="label lable--center">
-									Delete
-									<button type="button" class="button button--light-grey button--font-dark-grey"
-										data-element-type="product-element-delete-button">
-										⌫
-									</button>
-								</label>
-							</section>
-
-						</template>
-
-					</section>
+				<dl class="addition">
 
 
-					<!-- Кнопка для cоздания новой продуктов -->
+					<dt class="term">Full Address:</dt>
 
-					<button type="button" class="button button--light-grey button--font-dark-grey "
-						data-element-type="product-element-adding-button">
-						Create Product
-					</button>
+					<dd class="details" data-element-type="customer-address">➥</dd>
+					<dd class="details details--display-none" data-element-type="customer-address">15 harwood rd</dd>
+					<dd class="details details--display-none" data-element-type="customer-address">Kopengagen, Street Pronto
+						Avenu 14-10</dd>
+					<dd class="details details--display-none" data-element-type="customer-address">London, Street Kratova Avenu
+						34-5</dd>
+
+
+					<dt class="term">Phone Number:</dt>
+
+					<dd class="details" data-element-type="customer-phone">➥</dd>
+					<dd class="details details--display-none" data-element-type="customer-phone">+7984341476</dd>
+					<dd class="details details--display-none" data-element-type="customer-phone">+32134422442</dd>
+					<dd class="details details--display-none" data-element-type="customer-phone">+12343121446</dd>
+
+
+					<dt class="term">Email:</dt>
+
+					<dd class="details" data-element-type="customer-email">➥</dd>
+					<dd class="details details--display-none" data-element-type="customer-email">aerialfitness@aol.com</dd>
+					<dd class="details details--display-none" data-element-type="customer-email">kolyavarasev@gmail.com</dd>
+					<dd class="details details--display-none" data-element-type="customer-email">AnnaSvaeva@gmail.com</dd>
+
+				</dl>
+
+			</section>
+
+
+			<!-- Секция в которой генерируются позиции продуктов -->
+
+			<section class="product-area">
+
+
+				<!-- Секция со списком продуктов  -->
+
+				<section class="product-list product-list--empty" data-element-type="product-list">
+
+
+					<!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
+
+					<template data-element-type="product-template">
+
+						<section class="product" data-element-type="product">
+
+							<label class="label lable--center">
+								Product*
+								<select
+									class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down">
+									<option selected></option>
+									<option>teaching</option>
+									<option>private class (hire)</option>
+									<option>Teaching of airdancing with pole</option>
+									<option>Consultation</option>
+								</select>
+							</label>
+
+							<label class="label lable--center">
+								Date
+								<input type="date" class="input input--width-large">
+							</label>
+
+							<label class="label lable--center">
+								QTO
+								<input type="number" min="0" step="1" class="input input--width-small"
+									data-element-type="product-quantity">
+							</label>
+
+							<label class="label lable--center">
+								Price*
+								<input type="number" min="0" step="any" class="input input--width-medium"
+									data-element-type="product-price">
+							</label>
+
+							<label class="label lable--center">
+								Total
+								<output class="output" data-element-type="product-total">0</output>
+							</label>
+
+							<label class="label lable--center">
+								Delete
+								<button type="button" class="button button--light-grey button--font-dark-grey"
+									data-element-type="product-element-delete-button">
+									⌫
+								</button>
+							</label>
+						</section>
+
+					</template>
 
 				</section>
 
 
-				<!-- Подраздел с вычислением итогов по услугам -->
+				<!-- Кнопка для cоздания новой продуктов -->
 
-				<section class="calculation end-column__calculation">
+				<button type="button" class="button button--light-grey button--font-dark-grey "
+					data-element-type="product-element-adding-button">
+					Create Product
+				</button>
 
-					<label class="label lable--center">
-						Subtotal
-						<output class="output subtotal--input" data-element-type="subtotal">0</output>
-					</label>
-
-					<label class="label lable--center">Discount (%)
-						<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount">
-					</label>
-
-					<label class="label lable--center">
-						VAT (%)
-						<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat">
-					</label>
-
-					<label class="label lable--center">
-						Total
-						<output class="output" data-element-type="total-amount">0</output>
-					</label>
-
-				</section>
+			</section>
 
 
-				<!-- Комментарий к созданным услугам -->
+			<!-- Подраздел с вычислением итогов по услугам -->
 
-				<label class="label">Comment
-					<input type="text" class="input" data-element-type="comment">
+			<section class="calculation end-column__calculation">
+
+				<label class="label lable--center">
+					Subtotal
+					<output class="output subtotal--input" data-element-type="subtotal">0</output>
+				</label>
+
+				<label class="label lable--center">
+					Discount (%)
+					<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount">
+				</label>
+
+				<label class="label lable--center">
+					VAT (%)
+					<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat">
+				</label>
+
+				<label class="label lable--center">
+					Total
+					<output class="output" data-element-type="total-amount">0</output>
 				</label>
 
 			</section>
+
+
+			<!-- Комментарий к созданным услугам -->
+
+			<label class="label">Comment
+				<input type="text" class="input" data-element-type="comment">
+			</label>
+
 
 		</section>
 
@@ -827,6 +804,7 @@
 			}
 		}
 
+		
 		// Создаем функцию для подсчета прмежуточной сумммы для одного продукта:
 
 		function getOneProductTotal(productElement, productContributeElement) {
