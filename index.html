@@ -5,6 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Invoice Form</title>
+
 	<style>
 		/* Основные цвета и размеры шрифтов */
 
@@ -17,8 +18,8 @@
 			--hover-light-grey-color: #DDDDDD;
 			--white-color: #ffffff;
 
-			--h1-font-size: 21px;
-			--typesetting-font-size: 14px;
+			--h1-font-size: 16px;
+			--typesetting-font-size: 12px;
 		}
 
 
@@ -39,11 +40,11 @@
 			box-sizing: border-box;
 			display: flex;
 			flex-direction: column;
-			gap: 44px;
-			width: 1435px;
-			height: 749px;
-			border-radius: 36px;
-			padding: 64px 64px 64px 64px;
+			gap: 32px;
+			width: 1130px;
+			height: 580px;
+			border-radius: 26px;
+			padding: 12px 22px 10px 22px;
 			background-color: var(--white-color);
 		}
 
@@ -59,8 +60,8 @@
 			flex-direction: column;
 			flex-wrap: wrap;
 			align-content: space-between;
-			gap: 36px;
-			height: 482px;
+			gap: 24px;
+			height: 430px;
 		}
 
 
@@ -86,7 +87,7 @@
 			display: flex;
 			flex-direction: column;
 			gap: 12px;
-			width: 433px;
+			width: 338px;
 		}
 
 
@@ -97,22 +98,23 @@
 			flex-wrap: wrap;
 			gap: 8px;
 			margin: 0;
+			padding-left: 10px;
 		}
 
 		.term {
-			padding-left: 10px;
-			width: 125px;
+			width: 104px;
 			font: normal var(--typesetting-font-size) Arial, sans-serif;
 			color: var(--dark-grey-color);
 		}
 
 		.details {
-			flex-basis: 290px;
+			flex-basis: 214px;
 			margin: 0;
 			font: normal var(--typesetting-font-size) Arial, sans-serif;
 			color: var(--grey-color);
 			text-align: left;
 			white-space: nowrap;
+			text-overflow: ellipsis;
 			overflow: hidden;
 		}
 
@@ -124,10 +126,10 @@
 		/* Секция с продуктами */
 
 		.product-area {
-			width: 810px;
+			width: 691px;
 			display: flex;
 			flex-direction: column;
-			gap: 36px;
+			gap: 24px;
 		}
 
 
@@ -136,8 +138,8 @@
 		.product-list {
 			display: flex;
 			flex-direction: column;
-			gap: 36px;
-			max-height: 234px;
+			gap: 24px;
+			max-height: 198px;
 			overflow-y: scroll;
 		}
 
@@ -150,7 +152,7 @@
 
 		.product {
 			display: flex;
-			gap: 36px;
+			gap: 24px;
 		}
 
 
@@ -159,7 +161,7 @@
 		.calculation {
 			display: flex;
 			justify-content: right;
-			gap: 36px;
+			gap: 24px;
 			overflow: hidden;
 		}
 
@@ -172,7 +174,7 @@
 			align-items: center;
 			border-style: none;
 			border-radius: 6px;
-			height: 26px;
+			height: 24px;
 			padding: 2px 12px;
 			color: var(--white-color);
 			font: normal var(--typesetting-font-size) sans-serif;
@@ -222,7 +224,7 @@
 
 		.input {
 			box-sizing: border-box;
-			height: 26px;
+			height: 24px;
 			border: 1px solid var(--dark-grey-color);
 			border-radius: 6px;
 			padding: 0px 8px;
@@ -232,20 +234,20 @@
 
 
 		.input--width-extra-large {
-			width: 259px;
+			width: 216px;
 		}
 
 		.input--width-large {
-			width: 114px;
+			width: 104px;
 		}
 
 		.input--width-medium {
-			width: 88px;
+			width: 82px;
 		}
 
 
 		.input--width-small {
-			width: 53px;
+			width: 56px;
 		}
 
 		.input--appearance-none {
@@ -276,7 +278,7 @@
 			justify-content: center;
 			align-items: center;
 			width: 74px;
-			height: 26px;
+			height: 24px;
 			padding: 0px 8px;
 			font: bold var(--typesetting-font-size) Arial, sans-serif;
 			color: var(--grey-color);
@@ -795,7 +797,7 @@
 			}
 		}
 
-		
+
 		// Создаем функцию для подсчета прмежуточной сумммы для одного продукта:
 
 		function getOneProductTotal(productElement, productContributeElement) {
