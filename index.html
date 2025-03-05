@@ -6,315 +6,290 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Invoice Form</title>
 
-	<style>
+  <style>
+    
 		/* Основные цвета и размеры шрифтов */
 
-		:root {
+    :root {
+
+      --dark-grey-color: #1F1F1F;
+      --grey-color: #595757;
+      --hover-grey-color: #454343;
+      --light-grey-color: #E5E5E5;
+      --hover-light-grey-color: #DDDDDD;
+      --white-color: #ffffff;
 
-			--dark-grey-color: #141414;
-			--grey-color: #595757;
-			--hover-grey-color: #454343;
-			--light-grey-color: #E5E5E5;
-			--hover-light-grey-color: #DDDDDD;
-			--white-color: #ffffff;
+      --h1-font-size: 16px;
+      --typesetting-font-size: 14px;
+    }
 
-			--h1-font-size: 16px;
-			--typesetting-font-size: 12px;
-		}
 
+    .javascriptMaterialdesignGm3WizDialog-dialog__title {
+      font: 400 var(--typesetting-font-size) 'Arial', sans-serif;
+    }
 
-		/* Для бота */
 
-		body {
-			background-color: #464646;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100vh;
-		}
+    /* Форма */
 
+    .form {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      border-radius: 26px;
+      padding: 0;
+      background-color: var(--white-color);
+    }
 
-		/* Форма */
 
-		.form {
-			box-sizing: border-box;
-			display: flex;
-			flex-direction: column;
-			gap: 32px;
-			width: 1130px;
-			height: 580px;
-			border-radius: 26px;
-			padding: 12px 22px 10px 22px;
-			background-color: var(--white-color);
-		}
+    /* Содержимое */
 
-		.form__title {
-			margin: 0;
-		}
+    .content {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: space-between;
+      gap: 24px;
+      height: 452px;
+    }
 
 
-		/* Содержимое */
+    /* Дата инвойса */
 
-		.content {
-			display: flex;
-			flex-direction: column;
-			flex-wrap: wrap;
-			align-content: space-between;
-			gap: 24px;
-			height: 430px;
-		}
+    .content__calculation {
+      margin-top: auto;
+    }
 
 
+    /* Контрагет */
 
-		/* Заголовок */
+    .counterparty {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 372px;
+    }
 
-		.title {
-			font: normal var(--h1-font-size) Arial, sans-serif;
-			color: var(--dark-grey-color);
-		}
 
+    /* Дополнение */
 
-		/* Дата инвойса */
+    .addition {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding-left: 10px;
+    }
 
-		.content__calculation {
-			margin-top: auto;
-		}
+    .term {
+      width: 121px;
+      font: 400 var(--typesetting-font-size) 'Arial', sans-serif;
+      color: var(--grey-color);
+    }
 
+    .details {
+      width: 230px;
+      margin: 0;
+      font: 400 var(--typesetting-font-size)  'Arial', sans-serif;
+      color: var(--grey-color);
+      text-align: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
 
-		/* Контрагет */
+    .details--display-none {
+      display: none;
+    }
 
-		.counterparty {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			width: 338px;
-		}
 
+    /* Секция с продуктами */
 
-		/* Дополнение */
+    .product-area {
+      width: 724px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
 
-		.addition {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
-			margin: 0;
-			padding-left: 10px;
-		}
 
-		.term {
-			width: 104px;
-			font: normal var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--dark-grey-color);
-		}
+    /* Список продуктов */
 
-		.details {
-			flex-basis: 214px;
-			margin: 0;
-			font: normal var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--grey-color);
-			text-align: left;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			overflow: hidden;
-		}
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-height: 204px;
+      overflow-y: scroll;
+    }
 
-		.details--display-none {
-			display: none;
-		}
+    .product-list--empty:has(template:only-child) {
+      display: none;
+    }
 
 
-		/* Секция с продуктами */
+    /* Продукт */
 
-		.product-area {
-			width: 691px;
-			display: flex;
-			flex-direction: column;
-			gap: 24px;
-		}
+    .product {
+      display: flex;
+      gap: 24px;
+    }
 
 
-		/* Список продуктов */
+    /* Калькулятор */
 
-		.product-list {
-			display: flex;
-			flex-direction: column;
-			gap: 24px;
-			max-height: 198px;
-			overflow-y: scroll;
-		}
+    .calculation {
+      display: flex;
+      justify-content: right;
+      gap: 24px;
+      overflow: hidden;
+    }
 
-		.product-list--empty:has(template:only-child) {
-			display: none;
-		}
 
+    /* Кнопка */
 
-		/* Продукт */
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-style: none;
+      border-radius: 6px;
+      height: 24px;
+      padding: 2px 12px;
+      color: var(--white-color);
+      font: 500 var(--typesetting-font-size)  'Arial', sans-serif;
+    }
 
-		.product {
-			display: flex;
-			gap: 24px;
-		}
 
+    .button--grey {
+      background-color: var(--grey-color);
+    }
 
-		/* Калькулятор */
+    .button--light-grey {
+      background-color: var(--light-grey-color);
+    }
 
-		.calculation {
-			display: flex;
-			justify-content: right;
-			gap: 24px;
-			overflow: hidden;
-		}
+    .button--font-dark-grey {
+      color: var(--dark-grey-color);
+    }
 
+    .button--light-grey:hover {
+      background-color: var(--hover-light-grey-color);
+      cursor: pointer;
+    }
 
-		/* Кнопка */
+    .button--grey:hover {
+      background-color: var(--hover-grey-color);
+      cursor: pointer;
+    }
 
-		.button {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			border-style: none;
-			border-radius: 6px;
-			height: 24px;
-			padding: 2px 12px;
-			color: var(--white-color);
-			font: normal var(--typesetting-font-size) sans-serif;
-		}
 
 
-		.button--grey {
-			background-color: var(--grey-color);
-		}
+    /* Заголовок поля ввода */
 
-		.button--light-grey {
-			background-color: var(--light-grey-color);
-		}
+    .label {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font: 600 var(--typesetting-font-size)  'Arial', sans-serif;
+      color: var(--dark-grey-color);
+    }
 
-		.button--font-dark-grey {
-			color: var(--dark-grey-color);
-		}
+    .lable--center {
+      align-items: center;
+    }
 
-		.button--light-grey:hover {
-			background-color: var(--hover-light-grey-color);
-			cursor: pointer;
-		}
 
-		.button--grey:hover {
-			background-color: var(--hover-grey-color);
-			cursor: pointer;
-		}
+    /* Поле ввода */
 
+    .input {
+      box-sizing: border-box;
+      height: 24px;
+      border: 1px solid var(--dark-grey-color);
+      border-radius: 6px;
+      padding: 0px 8px;
+      font: 400 var(--typesetting-font-size)  'Arial', sans-serif;
+      color: var(--dark-grey-color);
+    }
 
 
-		/* Заголовок поля ввода */
+    .input--width-extra-large {
+      width: 238px;
+    }
 
-		.label {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			font: bold var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--dark-grey-color);
-		}
+    .input--width-large {
+      width: 112px;
+    }
 
-		.lable--center {
-			align-items: center;
-		}
+    .input--width-medium {
+      width: 82px;
+    }
 
 
-		/* Поле ввода */
+    .input--width-small {
+      width: 56px;
+    }
 
-		.input {
-			box-sizing: border-box;
-			height: 24px;
-			border: 1px solid var(--dark-grey-color);
-			border-radius: 6px;
-			padding: 0px 8px;
-			font: bold var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--grey-color);
-		}
+    .input--appearance-none {
+      appearance: none;
+    }
 
+    .input--overflow-hidden {
+      overflow: hidden;
+    }
 
-		.input--width-extra-large {
-			width: 216px;
-		}
+    .input--background-corner-drawn {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23595757" width="16" height="16"><path d="M7 10l5 5 5-5H7z"/></svg>') no-repeat;
+      background-position: calc(100% - 4px) center;
+      background-size: 18px;
+    }
 
-		.input--width-large {
-			width: 104px;
-		}
+    .input--cut-down {
+      padding-right: 16px;
+      text-overflow: ellipsis;
+    }
 
-		.input--width-medium {
-			width: 82px;
-		}
 
+    /* Поле вывода */
 
-		.input--width-small {
-			width: 56px;
-		}
-
-		.input--appearance-none {
-			appearance: none;
-		}
-
-		.input--overflow-hidden {
-			overflow: hidden;
-		}
-
-		.input--background-corner-drawn {
-			background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23595757" width="16" height="16"><path d="M7 10l5 5 5-5H7z"/></svg>') no-repeat;
-			background-position: calc(100% - 4px) center;
-			background-size: 18px;
-		}
-
-		.input--cut-down {
-			padding-right: 16px;
-			text-overflow: ellipsis;
-		}
-
-
-		/* Поле вывода */
-
-		.output {
-			box-sizing: border-box;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 74px;
-			height: 24px;
-			padding: 0px 8px;
-			font: bold var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--grey-color);
-			text-align: center;
-		}
-	</style>
+    .output {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 74px;
+      height: 24px;
+      padding: 0px 8px;
+      font: 600 var(--typesetting-font-size) 'Arial', sans-serif;
+      color: var(--grey-color);
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
 
-	<form class="form" name="invoice">
+  <form class="form" name="invoice">
 
 
-		<!-- Заголовок иновойса -->
+    <!-- Общий раздел дл ввода данных -->
 
-		<h1 class="title form__title">New Invoice № 1234</h1>
-
-
-		<!-- Общий раздел дл ввода данных -->
-
-		<section class="content">
+    <section class="content">
 
 
-			<!-- Подраздел с вводом даты создания/обновления инвойса (по умолчанию текущая) -->
+      <!-- Подраздел с вводом даты создания/обновления инвойса (по умолчанию текущая) -->
 
-			<label class="label">
+      <label class="label">
 				Date (Сurrent by default)*
 				<input type="date" class="input input--width-large" data-element-type="invoice-date">
 			</label>
 
 
-			<!-- Подраздел с инофрмацией о подрядчике -->
+      <!-- Подраздел с инофрмацией о подрядчике -->
 
-			<section class="counterparty">
+      <section class="counterparty">
 
-				<label class="label">
+        <label class="label">
 					From (Business Name)*
 					<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden"
 						data-element-type="contractor">
@@ -324,69 +299,75 @@
 					</select>
 				</label>
 
-				<dl class="addition">
+        <dl class="addition">
 
 
-					<dt class="term">Full Address:</dt>
+          <dt class="term">Full Address:</dt>
 
-					<dd class="details" data-element-type="contractor-address">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-address">17 ashdene rd</dd>
-					<dd class="details details--display-none" data-element-type="contractor-address">London, Hogvards
-						Street11-11
-					</dd>
-
-
-					<dt class="term">Phone Number:</dt>
-
-					<dd class="details" data-element-type="contractor-phone">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-phone">+7801482145</dd>
-					<dd class="details details--display-none" data-element-type="contractor-phone">+7945623451</dd>
+          <dd class="details" data-element-type="contractor-address">➥</dd>
+          <dd class="details details--display-none" data-element-type="contractor-address">17 ashdene rd</dd>
+          <dd class="details details--display-none" data-element-type="contractor-address">London, Hogvards
+            Street11-11
+          </dd>
 
 
-					<dt class="term">Email:</dt>
+          <dt class="term">Phone Number:</dt>
 
-					<dd class="details" data-element-type="contractor-email">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-email">olyaevt23@gmail.com</dd>
-					<dd class="details details--display-none" data-element-type="contractor-email">flightpilates@gmail.com</dd>
-
-
-					<dt class="term">Bank Name:</dt>
-
-					<dd class="details" data-element-type="contractor-bank-name">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-bank-name">lloyds</dd>
-					<dd class="details details--display-none" data-element-type="contractor-bank-name">RF</dd>
+          <dd class="details" data-element-type="contractor-phone">➥</dd>
+          <dd class="details details--display-none" data-element-type="contractor-phone">+7801482145</dd>
+          <dd class="details details--display-none" data-element-type="contractor-phone">+7945623451</dd>
 
 
-					<dt class="term">Sort Number:</dt>
+          <dt class="term">Email:</dt>
 
-					<dd class="details" data-element-type="contractor-sort-number">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-sort-number">30-99-08</dd>
-					<dd class="details details--display-none" data-element-type="contractor-sort-number">234553</dd>
-
-
-					<dt class="term">Account Number:</dt>
-
-					<dd class="details" data-element-type="contractor-account-number">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-account-number">21230660</dd>
-					<dd class="details details--display-none" data-element-type="contractor-account-number">3233434222243</dd>
+          <dd class="details" data-element-type="contractor-email">➥</dd>
+          <dd class="details details--display-none" data-element-type="contractor-email">olyaevt23@gmail.com
+          </dd>
+          <dd class="details details--display-none" data-element-type="contractor-email">
+            flightpilates@gmail.com</dd>
 
 
-					<dt class="term">Alternative Method:</dt>
+          <dt class="term">Bank Name:</dt>
 
-					<dd class="details" data-element-type="contractor-alternative-method">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-alternative-method">PayPal</dd>
-					<dd class="details details--display-none" data-element-type="contractor-alternative-method">Stripe</dd>
-
-				</dl>
-
-			</section>
+          <dd class="details" data-element-type="contractor-bank-name">➥</dd>
+          <dd class="details details--display-none" data-element-type="contractor-bank-name">lloyds</dd>
+          <dd class="details details--display-none" data-element-type="contractor-bank-name">RF</dd>
 
 
-			<!-- Подраздел с информацией о заказчике -->
+          <dt class="term">Sort Number:</dt>
 
-			<section class="counterparty">
+          <dd class="details" data-element-type="contractor-sort-number">➥</dd>
+          <dd class="details details--display-none" data-element-type="contractor-sort-number">30-99-08</dd>
+          <dd class="details details--display-none" data-element-type="contractor-sort-number">234553</dd>
 
-				<label class="label">
+
+          <dt class="term">Account Number:</dt>
+
+          <dd class="details" data-element-type="contractor-account-number">➥</dd>
+          <dd class="details details--display-none" data-element-type="contractor-account-number">21230660
+          </dd>
+          <dd class="details details--display-none" data-element-type="contractor-account-number">
+            3233434222243</dd>
+
+
+          <dt class="term">Alternative Method:</dt>
+
+          <dd class="details" data-element-type="contractor-alternative-method">➥</dd>
+          <dd class="details details--display-none" data-element-type="contractor-alternative-method">PayPal
+          </dd>
+          <dd class="details details--display-none" data-element-type="contractor-alternative-method">Stripe
+          </dd>
+
+        </dl>
+
+      </section>
+
+
+      <!-- Подраздел с информацией о заказчике -->
+
+      <section class="counterparty">
+
+        <label class="label">
 					To (Full Name / Business Name)*
 					<select
 						class="input input--appearance-none input--background-corner-drawn input--overflow-hidden input--cut-down"
@@ -400,56 +381,61 @@
 					</select>
 				</label>
 
-				<dl class="addition">
+        <dl class="addition">
 
 
-					<dt class="term">Full Address:</dt>
+          <dt class="term">Full Address:</dt>
 
-					<dd class="details" data-element-type="customer-address">➥</dd>
-					<dd class="details details--display-none" data-element-type="customer-address">15 harwood rd</dd>
-					<dd class="details details--display-none" data-element-type="customer-address">Kopengagen, Street Pronto
-						Avenu 14-10</dd>
-					<dd class="details details--display-none" data-element-type="customer-address">London, Street Kratova Avenu
-						34-5</dd>
-
-
-					<dt class="term">Phone Number:</dt>
-
-					<dd class="details" data-element-type="customer-phone">➥</dd>
-					<dd class="details details--display-none" data-element-type="customer-phone">+7984341476</dd>
-					<dd class="details details--display-none" data-element-type="customer-phone">+32134422442</dd>
-					<dd class="details details--display-none" data-element-type="customer-phone">+12343121446</dd>
+          <dd class="details" data-element-type="customer-address">➥</dd>
+          <dd class="details details--display-none" data-element-type="customer-address">15 harwood rd</dd>
+          <dd class="details details--display-none" data-element-type="customer-address">Kopengagen, Street
+            Pronto
+            Avenu 14-10</dd>
+          <dd class="details details--display-none" data-element-type="customer-address">London, Street
+            Kratova Avenu
+            34-5</dd>
 
 
-					<dt class="term">Email:</dt>
+          <dt class="term">Phone Number:</dt>
 
-					<dd class="details" data-element-type="customer-email">➥</dd>
-					<dd class="details details--display-none" data-element-type="customer-email">aerialfitness@aol.com</dd>
-					<dd class="details details--display-none" data-element-type="customer-email">kolyavarasev@gmail.com</dd>
-					<dd class="details details--display-none" data-element-type="customer-email">AnnaSvaeva@gmail.com</dd>
-
-				</dl>
-
-			</section>
+          <dd class="details" data-element-type="customer-phone">➥</dd>
+          <dd class="details details--display-none" data-element-type="customer-phone">+7984341476</dd>
+          <dd class="details details--display-none" data-element-type="customer-phone">+32134422442</dd>
+          <dd class="details details--display-none" data-element-type="customer-phone">+12343121446</dd>
 
 
-			<!-- Секция в которой генерируются позиции продуктов -->
+          <dt class="term">Email:</dt>
 
-			<section class="product-area">
+          <dd class="details" data-element-type="customer-email">➥</dd>
+          <dd class="details details--display-none" data-element-type="customer-email">aerialfitness@aol.com
+          </dd>
+          <dd class="details details--display-none" data-element-type="customer-email">kolyavarasev@gmail.com
+          </dd>
+          <dd class="details details--display-none" data-element-type="customer-email">AnnaSvaeva@gmail.com
+          </dd>
+
+        </dl>
+
+      </section>
 
 
-				<!-- Секция со списком продуктов  -->
+      <!-- Секция в которой генерируются позиции продуктов -->
 
-				<section class="product-list product-list--empty" data-element-type="product-list">
+      <section class="product-area">
 
 
-					<!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
+        <!-- Секция со списком продуктов  -->
 
-					<template data-element-type="product-template">
+        <section class="product-list product-list--empty" data-element-type="product-list">
 
-						<section class="product" data-element-type="product">
 
-							<label class="label lable--center">
+          <!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
+
+          <template data-element-type="product-template">
+
+            <section class="product" data-element-type="product">
+
+              <label class="label lable--center">
 								Product*
 								<select
 									class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down">
@@ -461,99 +447,97 @@
 								</select>
 							</label>
 
-							<label class="label lable--center">
+              <label class="label lable--center">
 								Date
 								<input type="date" class="input input--width-large">
 							</label>
 
-							<label class="label lable--center">
+              <label class="label lable--center">
 								QTO
 								<input type="number" min="0" step="1" class="input input--width-small"
 									data-element-type="product-quantity">
 							</label>
 
-							<label class="label lable--center">
+              <label class="label lable--center">
 								Price*
 								<input type="number" min="0" step="any" class="input input--width-medium"
 									data-element-type="product-price">
 							</label>
 
-							<label class="label lable--center">
+              <label class="label lable--center">
 								Total
 								<output class="output" data-element-type="product-total">0</output>
 							</label>
 
-							<label class="label lable--center">
+              <label class="label lable--center">
 								Delete
 								<button type="button" class="button button--light-grey button--font-dark-grey"
 									data-element-type="product-element-delete-button">
 									⌫
 								</button>
 							</label>
-						</section>
+            </section>
 
-					</template>
+          </template>
 
-				</section>
+        </section>
 
 
-				<!-- Кнопка для cоздания новой продуктов -->
+        <!-- Кнопка для cоздания новой продуктов -->
 
-				<button type="button" class="button button--light-grey button--font-dark-grey "
+        <button type="button" class="button button--light-grey button--font-dark-grey "
 					data-element-type="product-element-adding-button">
 					Create Product
 				</button>
 
-			</section>
+      </section>
 
 
-			<!-- Подраздел с вычислением итогов по услугам -->
+      <!-- Подраздел с вычислением итогов по услугам -->
 
-			<section class="calculation content__calculation">
+      <section class="calculation content__calculation">
 
-				<label class="label lable--center">
+        <label class="label lable--center">
 					Subtotal
 					<output class="output subtotal--input" data-element-type="subtotal">0</output>
 				</label>
 
-				<label class="label lable--center">
+        <label class="label lable--center">
 					Discount (%)
 					<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount">
 				</label>
 
-				<label class="label lable--center">
+        <label class="label lable--center">
 					VAT (%)
 					<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat">
 				</label>
 
-				<label class="label lable--center">
+        <label class="label lable--center">
 					Total
 					<output class="output" data-element-type="total-amount">0</output>
 				</label>
 
-			</section>
+      </section>
 
 
-			<!-- Комментарий к созданным услугам -->
+      <!-- Комментарий к созданным услугам -->
 
-			<label class="label">Comment
+      <label class="label">Comment
 				<input type="text" class="input" data-element-type="comment">
 			</label>
 
 
-		</section>
+    </section>
 
 
-		<!-- Кнопка для запуска обработчки инвойса  -->
+    <!-- Кнопка для запуска обработчки инвойса  -->
 
-		<button type="submit" class="button button--grey">Create Invoice</button>
+    <button type="submit" class="button button--grey">Create Invoice</button>
 
-	</form>
+  </form>
 
-	<script>
-
-
-		// Устанавливаем дату создания инвойса по умолчанию в форме:
+  <script>
+    // Устанавливаем дату создания инвойса по умолчанию в форме:
 
 		document.querySelector('input[data-element-type="invoice-date"]').value = new Date().toISOString().split('T')[0];
 
@@ -797,7 +781,7 @@
 			}
 		}
 
-
+		
 		// Создаем функцию для подсчета прмежуточной сумммы для одного продукта:
 
 		function getOneProductTotal(productElement, productContributeElement) {
@@ -884,7 +868,7 @@
 
 		}
 
-	</script>
+  </script>
 </body>
 
 </html>
