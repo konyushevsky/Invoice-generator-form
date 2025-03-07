@@ -755,13 +755,13 @@
 
 					// Обновляем все значения дополнительных полей соответствующее выбранному поставщику:
 
-					updateСounterpartyFileldValue('[data-element-type="contractor-address"]', selectedIndex);
-					updateСounterpartyFileldValue('[data-element-type="contractor-phone"]', selectedIndex);
-					updateСounterpartyFileldValue('[data-element-type="contractor-email"]', selectedIndex);
-					updateСounterpartyFileldValue('[data-element-type="contractor-bank-name"]', selectedIndex);
-					updateСounterpartyFileldValue('[data-element-type="contractor-sort-number"]', selectedIndex);
-					updateСounterpartyFileldValue('[data-element-type="contractor-account-number"]', selectedIndex);
-					updateСounterpartyFileldValue('[data-element-type="contractor-alternative-method"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="contractor-address"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="contractor-phone"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="contractor-email"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="contractor-bank-name"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="contractor-sort-number"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="contractor-account-number"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="contractor-alternative-method"]', selectedIndex);
 
 					break;
 				}
@@ -779,9 +779,9 @@
 
 					// Обновляем все значения дополнительных полей соответствующее выбранному поставщику:
 
-					updateСounterpartyFileldValue('[data-element-type="customer-address"]', selectedIndex);
-					updateСounterpartyFileldValue('[data-element-type="customer-phone"]', selectedIndex);
-					updateСounterpartyFileldValue('[data-element-type="customer-email"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="customer-address"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="customer-phone"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="customer-email"]', selectedIndex);
 
 
 					break;
@@ -859,7 +859,7 @@
 
 		// Определяем функцию, которая скрывает предыдущие значение поля, выброннаго контрагента и устанавливаем новое:
 
-		function updateСounterpartyFileldValue(counterpartySelectorName, selectedIndex) {
+		function updateCounterpartyFileldValue(counterpartySelectorName, selectedIndex) {
 
 			Array.from(document.querySelectorAll(counterpartySelectorName)).forEach((element, index) => {
 
