@@ -5,284 +5,288 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Invoice Form</title>
-	<style>
-		/* Основные цвета и размеры шрифтов */
-
-		:root {
-
-			--dark-grey-color: #141414;
-			--grey-color: #595757;
-			--hover-grey-color: #454343;
-			--light-grey-color: #E5E5E5;
-			--hover-light-grey-color: #DDDDDD;
-			--white-color: #ffffff;
-
-			--h1-font-size: 21px;
-			--typesetting-font-size: 14px;
-		}
-
-
-		/* Для бота */
+  <style>
 
 		body {
-			background-color: #464646;
-			display: flex;
-			justify-content: center;
-			padding-top: 64px;
-		}
-
-
-		/* Форма */
-
-		.form {
-			box-sizing: border-box;
-			display: flex;
-			flex-direction: column;
-			gap: 44px;
-			width: 1435px;
-			height: 749px;
-			border-radius: 36px;
-			padding: 64px 64px 64px 64px;
-			background-color: var(--white-color);
-		}
-
-		.form__title {
-			margin: 0;
-		}
-
-
-		/* Содержимое */
-
-		.content {
-			display: flex;
-			flex-direction: column;
-			flex-wrap: wrap;
-			align-content: space-between;
-			gap: 36px;
-			height: 482px;
-		}
-
-
-
-		/* Заголовок */
-
-		.title {
-			font: normal var(--h1-font-size) Arial, sans-serif;
-			color: var(--dark-grey-color);
-		}
-
-
-		/* Дата инвойса */
-
-		.content__calculation {
-			margin-top: auto;
-		}
-
-
-		/* Контрагет */
-
-		.counterparty {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			width: 433px;
-		}
-
-
-		/* Дополнение */
-
-		.addition {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 8px;
-			margin: 0;
-		}
-
-		.term {
-			padding-left: 10px;
-			width: 125px;
-			font: normal var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--dark-grey-color);
-		}
-
-		.details {
-			flex-basis: 290px;
-			margin: 0;
-			font: normal var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--grey-color);
-			text-align: left;
-			white-space: nowrap;
-			text-overflow: ellipsis;
-			overflow: hidden;
-		}
-
-		.details--display-none {
-			display: none;
-		}
-
-
-		/* Секция с продуктами */
-
-		.product-area {
-			width: 810px;
-			display: flex;
-			flex-direction: column;
-			gap: 36px;
-		}
-
-
-		/* Список продуктов */
-
-		.product-list {
-			display: flex;
-			flex-direction: column;
-			gap: 36px;
-			max-height: 234px;
-			overflow-y: scroll;
-		}
-
-		.product-list--empty:has(template:only-child) {
-			display: none;
-		}
-
-
-		/* Продукт */
-
-		.product {
-			display: flex;
-			gap: 36px;
-		}
-
-
-		/* Калькулятор */
-
-		.calculation {
-			display: flex;
-			justify-content: right;
-			gap: 36px;
-			overflow: hidden;
-		}
-
-
-		/* Кнопка */
-
-		.button {
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			border-style: none;
-			border-radius: 6px;
-			height: 26px;
-			padding: 2px 12px;
-			color: var(--white-color);
-			font: normal var(--typesetting-font-size) sans-serif;
+			width: 100vw;
+			height: 100vh;
+			background-color: #454343;
+
 		}
 
 
-		.button--grey {
-			background-color: var(--grey-color);
-		}
+    /* Основные цвета и размеры шрифтов */
 
-		.button--light-grey {
-			background-color: var(--light-grey-color);
-		}
+    :root {
 
-		.button--font-dark-grey {
-			color: var(--dark-grey-color);
-		}
+      --white-color: #FFFFFF;
+      --light-grey-color: #E5E5E5;
+      --lighter-grey-color: #DDDDDD;
+      --grey-color: #595757;
+      --dark-grey-color: #454343;
+      --darker-grey-color: #3B3939;
 
-		.button--light-grey:hover {
-			background-color: var(--hover-light-grey-color);
-			cursor: pointer;
-		}
-
-		.button--grey:hover {
-			background-color: var(--hover-grey-color);
-			cursor: pointer;
-		}
+      --h1-font-size: 16px;
+      --typesetting-font-size: 14px;
+    }
 
 
+    /* Заголовок */
 
-		/* Заголовок поля ввода */
-
-		.label {
-			display: flex;
-			flex-direction: column;
-			gap: 12px;
-			font: bold var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--dark-grey-color);
-		}
-
-		.lable--center {
-			align-items: center;
-		}
+    .title {
+      font: 600 var(--h1-font-size) Arial, sans-serif;
+      color: var(--dark-grey-color);
+    }
 
 
-		/* Поле ввода */
+    /* Форма */
 
-		.input {
-			box-sizing: border-box;
-			height: 26px;
-			border: 1px solid var(--dark-grey-color);
-			border-radius: 6px;
-			padding: 0px 8px;
-			font: bold var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--grey-color);
-		}
+    .form {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      border-radius: 26px;
+      padding: 46px;
+      background-color: var(--white-color);
+    }
 
-
-		.input--width-extra-large {
-			width: 259px;
-		}
-
-		.input--width-large {
-			width: 114px;
-		}
-
-		.input--width-medium {
-			width: 88px;
-		}
+    .form__title {
+      margin: 0;
+    }
 
 
-		.input--width-small {
-			width: 53px;
-		}
+    /* Содержимое */
 
-		.input--appearance-none {
-			appearance: none;
-		}
-
-		.input--overflow-hidden {
-			overflow: hidden;
-		}
-
-		.input--background-corner-drawn {
-			background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23595757" width="16" height="16"><path d="M7 10l5 5 5-5H7z"/></svg>') no-repeat;
-			background-position: calc(100% - 4px) center;
-			background-size: 18px;
-		}
-
-		.input--cut-down {
-			padding-right: 16px;
-			text-overflow: ellipsis;
-		}
+    .content {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: space-between;
+      gap: 24px;
+      height: 452px;
+			width: 1152px;
+    }
 
 
-		/* Поле вывода */
+    /* Дата инвойса */
 
-		.output {
-			box-sizing: border-box;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 74px;
-			height: 26px;
-			padding: 0px 8px;
-			font: bold var(--typesetting-font-size) Arial, sans-serif;
-			color: var(--grey-color);
-			text-align: center;
-		}
-	</style>
+    .content__calculation {
+      margin-top: auto;
+    }
+
+
+    /* Контрагет */
+
+    .counterparty {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 372px;
+    }
+
+
+    /* Дополнение */
+
+    .addition {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0;
+      padding-left: 10px;
+    }
+
+    .term {
+      width: 121px;
+      font: 400 var(--typesetting-font-size)/1.13 'Arial', sans-serif;
+      color: var(--grey-color);
+    }
+
+    .details {
+      width: 230px;
+      margin: 0;
+      font: 400 var(--typesetting-font-size)/1.13 'Arial', sans-serif;
+      color: var(--grey-color);
+      text-align: left;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+    }
+
+    .details--display-none {
+      display: none;
+    }
+
+
+    /* Секция с продуктами */
+
+    .product-area {
+      width: 725px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+
+    /* Список продуктов */
+
+    .product-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      max-height: 205px;
+      overflow-y: scroll;
+    }
+
+    .product-list--empty:has(template:only-child) {
+      display: none;
+    }
+
+
+    /* Продукт */
+
+    .product {
+      display: flex;
+      gap: 24px;
+    }
+
+
+    /* Калькулятор */
+
+    .calculation {
+      display: flex;
+      justify-content: right;
+      gap: 24px;
+      overflow: hidden;
+    }
+
+
+    /* Кнопка */
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-style: none;
+      border-radius: 6px;
+      height: 24px;
+      padding: 2px 12px;
+      color: var(--white-color);
+      font: 500 var(--typesetting-font-size) 'Arial', sans-serif;
+    }
+
+
+    .button--grey {
+      background-color: var(--grey-color);
+    }
+
+    .button--light-grey {
+      background-color: var(--light-grey-color);
+    }
+
+    .button--font-dark-grey {
+      color: var(--dark-grey-color);
+    }
+
+    .button--waiting {
+      background-color: var(--darker-grey-color);
+      cursor: pointer;
+    }
+
+    .button--light-grey:hover {
+      background-color: var(--lighter-grey-color);
+      cursor: pointer;
+    }
+
+    .button--grey:hover {
+      background-color: var(--dark-grey-color);
+      cursor: pointer;
+    }
+
+
+    /* Заголовок поля ввода */
+
+    .label {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font: 600 var(--typesetting-font-size) 'Arial', sans-serif;
+      color: var(--dark-grey-color);
+    }
+
+    .lable--center {
+      align-items: center;
+    }
+
+
+    /* Поле ввода */
+
+    .input {
+      box-sizing: border-box;
+      height: 24px;
+      border: 1px solid var(--dark-grey-color);
+      border-radius: 6px;
+      padding: 0px 8px;
+      font: 400 var(--typesetting-font-size) 'Arial', sans-serif;
+      color: var(--dark-grey-color);
+    }
+
+
+    .input--width-extra-large {
+      width: 238px;
+    }
+
+    .input--width-large {
+      width: 112px;
+    }
+
+    .input--width-medium {
+      width: 82px;
+    }
+
+
+    .input--width-small {
+      width: 56px;
+    }
+
+    .input--appearance-none {
+      appearance: none;
+    }
+
+    .input--overflow-hidden {
+      overflow: hidden;
+    }
+
+    .input--background-corner-drawn {
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23595757" width="16" height="16"><path d="M7 10l5 5 5-5H7z"/></svg>') no-repeat;
+      background-position: calc(100% - 4px) center;
+      background-size: 18px;
+    }
+
+    .input--cut-down {
+      padding-right: 16px;
+      text-overflow: ellipsis;
+    }
+
+
+    /* Поле вывода */
+
+    .output {
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 74px;
+      height: 24px;
+      padding: 0px 8px;
+      font: 600 var(--typesetting-font-size) 'Arial', sans-serif;
+      color: var(--grey-color);
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
