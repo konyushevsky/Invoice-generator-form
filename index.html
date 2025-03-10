@@ -9,12 +9,12 @@
 
     :root {
 
-      --dark-grey-color: #1F1F1F;
-      --grey-color: #595757;
-      --hover-grey-color: #454343;
+      --white-color: #FFFFFF;
       --light-grey-color: #E5E5E5;
-      --hover-light-grey-color: #DDDDDD;
-      --white-color: #ffffff;
+      --lighter-grey-color: #DDDDDD;
+      --grey-color: #595757;
+      --dark-grey-color: #454343;
+      --darker-grey-color: #3B3939;
 
       --h1-font-size: 16px;
       --typesetting-font-size: 14px;
@@ -87,19 +87,19 @@
 
     .term {
       width: 121px;
-      font: 400 var(--typesetting-font-size) 'Arial', sans-serif;
+      font: 400 var(--typesetting-font-size)/1.13 'Arial', sans-serif;
       color: var(--grey-color);
     }
 
     .details {
       width: 230px;
       margin: 0;
-      font: 400 var(--typesetting-font-size) 'Arial', sans-serif;
+      font: 400 var(--typesetting-font-size)/1.13 'Arial', sans-serif;
       color: var(--grey-color);
       text-align: left;
       white-space: nowrap;
       text-overflow: ellipsis;
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     .details--display-none {
@@ -123,7 +123,7 @@
       display: flex;
       flex-direction: column;
       gap: 24px;
-      max-height: 204px;
+      max-height: 205px;
       overflow-y: scroll;
     }
 
@@ -177,16 +177,20 @@
       color: var(--dark-grey-color);
     }
 
+    .button--waiting {
+      background-color: var(--darker-grey-color);
+      cursor: pointer;
+    }
+
     .button--light-grey:hover {
-      background-color: var(--hover-light-grey-color);
+      background-color: var(--lighter-grey-color);
       cursor: pointer;
     }
 
     .button--grey:hover {
-      background-color: var(--hover-grey-color);
+      background-color: var(--dark-grey-color);
       cursor: pointer;
     }
-
 
 
     /* Заголовок поля ввода */
@@ -275,9 +279,13 @@
 
   <form class="form" name="invoice">
 
+
     <!-- Заголовок инвойса -->
 
-    <h1 class="title form__title">New Invoice № 1234</h1>
+    <h1 class="title form__title" data-element-type="invoice-number" data-element-value="<?= invoiceNumber ?>">Invoice №
+      <?= invoiceNumber?>
+      <?= isNewInvoice ? '(new)' : '(being edited)' ?>
+    </h1>
 
 
     <!-- Общий раздел дл ввода данных -->
@@ -300,10 +308,16 @@
         <label class="label">
 					From (Business Name)*
 					<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden"
-						data-element-type="contractor">
-						<option selected>&nbsp;</option>
-						<option>Gera Evtukhova</option>
-						<option>Flight Pilates</option>
+						data-element-type="contractor-name" required>
+
+            <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+              
+              <option <?= (isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? 'selected' : '' ?> >
+                <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.companieNameIndex] ?>
+              </option>
+
+            <? } ?>
+
 					</select>
 				</label>
 
@@ -312,59 +326,93 @@
 
           <dt class="term">Full Address:</dt>
 
-          <dd class="details" data-element-type="contractor-address">➥</dd>
-          <dd class="details details--display-none" data-element-type="contractor-address">17 ashdene rd</dd>
-          <dd class="details details--display-none" data-element-type="contractor-address">London, Hogvards
-            Street11-11
+          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="contractor-address">
+            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.addressIndex] ?>
           </dd>
+
+          <? } ?>
 
 
           <dt class="term">Phone Number:</dt>
 
-          <dd class="details" data-element-type="contractor-phone">➥</dd>
-          <dd class="details details--display-none" data-element-type="contractor-phone">+7801482145</dd>
-          <dd class="details details--display-none" data-element-type="contractor-phone">+7945623451</dd>
+          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="contractor-phone">
+            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.phoneNumberIndex] ?>
+          </dd>
+
+          <? } ?>
 
 
           <dt class="term">Email:</dt>
 
-          <dd class="details" data-element-type="contractor-email">➥</dd>
-          <dd class="details details--display-none" data-element-type="contractor-email">olyaevt23@gmail.com
+          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="contractor-email">
+            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.emailIndex] ?>
           </dd>
-          <dd class="details details--display-none" data-element-type="contractor-email">
-            flightpilates@gmail.com</dd>
+
+          <? } ?>
 
 
           <dt class="term">Bank Name:</dt>
 
-          <dd class="details" data-element-type="contractor-bank-name">➥</dd>
-          <dd class="details details--display-none" data-element-type="contractor-bank-name">lloyds</dd>
-          <dd class="details details--display-none" data-element-type="contractor-bank-name">RF</dd>
+          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="contractor-bank-name">
+            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.bankNameIndex] ?>
+          </dd>
+
+          <? } ?>
 
 
           <dt class="term">Sort Number:</dt>
 
-          <dd class="details" data-element-type="contractor-sort-number">➥</dd>
-          <dd class="details details--display-none" data-element-type="contractor-sort-number">30-99-08</dd>
-          <dd class="details details--display-none" data-element-type="contractor-sort-number">234553</dd>
+          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="contractor-sort-number">
+            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.sortNumberIndex] ?>
+          </dd>
+
+          <? } ?>
 
 
           <dt class="term">Account Number:</dt>
 
-          <dd class="details" data-element-type="contractor-account-number">➥</dd>
-          <dd class="details details--display-none" data-element-type="contractor-account-number">21230660
+          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="contractor-account-number">
+            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.accountNumberIndex] ?>
           </dd>
-          <dd class="details details--display-none" data-element-type="contractor-account-number">
-            3233434222243</dd>
+
+          <? } ?>
 
 
           <dt class="term">Alternative Method:</dt>
 
-          <dd class="details" data-element-type="contractor-alternative-method">➥</dd>
-          <dd class="details details--display-none" data-element-type="contractor-alternative-method">PayPal
+          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="contractor-alternative-method">
+            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.alternativeMethodIndex] ?>
           </dd>
-          <dd class="details details--display-none" data-element-type="contractor-alternative-method">Stripe
-          </dd>
+
+          <? } ?>
 
         </dl>
 
@@ -379,12 +427,15 @@
 					To (Full Name / Business Name)*
 					<select
 						class="input input--appearance-none input--background-corner-drawn input--overflow-hidden input--cut-down"
-						data-element-type="customer">
+						data-element-type="customer-name" required>
 
-						<option selected>&nbsp;</option>
-						<option>Aerialactive</option>
-						<option>Kolya Hverasev</option>
-						<option>Anna Svaeva</option>
+            <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
+              
+              <option <?= (isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? 'selected' : '' ?> >
+                <?= clientSheetArray[i][clientColumnNamesWithIndexes.clientNameIndex] ?>
+              </option>
+
+            <? } ?>
 
 					</select>
 				</label>
@@ -394,33 +445,42 @@
 
           <dt class="term">Full Address:</dt>
 
-          <dd class="details" data-element-type="customer-address">➥</dd>
-          <dd class="details details--display-none" data-element-type="customer-address">15 harwood rd</dd>
-          <dd class="details details--display-none" data-element-type="customer-address">Kopengagen, Street
-            Pronto
-            Avenu 14-10</dd>
-          <dd class="details details--display-none" data-element-type="customer-address">London, Street
-            Kratova Avenu
-            34-5</dd>
+          <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="customer-address">
+            <?= clientSheetArray[i][clientColumnNamesWithIndexes.addressIndex] ?>
+          </dd>
+
+          <? } ?>
 
 
           <dt class="term">Phone Number:</dt>
 
-          <dd class="details" data-element-type="customer-phone">➥</dd>
-          <dd class="details details--display-none" data-element-type="customer-phone">+7984341476</dd>
-          <dd class="details details--display-none" data-element-type="customer-phone">+32134422442</dd>
-          <dd class="details details--display-none" data-element-type="customer-phone">+12343121446</dd>
+          <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="customer-phone">
+            <?= clientSheetArray[i][clientColumnNamesWithIndexes.phoneNumberIndex] ?>
+          </dd>
+
+          <? } ?>
 
 
           <dt class="term">Email:</dt>
 
-          <dd class="details" data-element-type="customer-email">➥</dd>
-          <dd class="details details--display-none" data-element-type="customer-email">aerialfitness@aol.com
+          <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
+
+          <dd
+            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
+            data-element-type="customer-email">
+            <?= clientSheetArray[i][clientColumnNamesWithIndexes.emailIndex] ?>
           </dd>
-          <dd class="details details--display-none" data-element-type="customer-email">kolyavarasev@gmail.com
-          </dd>
-          <dd class="details details--display-none" data-element-type="customer-email">AnnaSvaeva@gmail.com
-          </dd>
+
+          <? } ?>
+
 
         </dl>
 
@@ -439,62 +499,80 @@
 
           <!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
 
+          <? for (let i = 0; i < sellingProductListArray.length; i++) { ?>
+
+
+          <? if (i == 0) {  ?>
+
           <template data-element-type="product-template">
+
+            <? } ?>
+
 
             <section class="product" data-element-type="product">
 
               <label class="label lable--center">
-								Product*
-								<select
-									class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down">
-									<option selected>&nbsp;</option>
-									<option>teaching</option>
-									<option>private class (hire)</option>
-									<option>Teaching of airdancing with pole</option>
-									<option>Consultation</option>
-								</select>
-							</label>
+                  Product*
+
+                  <select class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down" data-element-type="product-name">
+
+                    <? for (let k = 0; k < productSheetArray.length; k++) { ?>
+              
+                      <option <?= (isNewInvoice && k == 0) || (isNewInvoice == false && k == sellingProductSelectedIndex) ? 'selected' : '' ?> >
+                        <?= productSheetArray[k][productColumnNamesWithIndexes.productNameIndex] ?>
+                      </option>
+
+                    <? } ?>
+
+                  </select>
+
+                </label>
 
               <label class="label lable--center">
-								Date
-								<input type="date" class="input input--width-large">
-							</label>
+                  Date
+                  <input type="date" class="input input--width-large" 
+                  data-element-type="product-date">
+                </label>
 
               <label class="label lable--center">
-								QTO
-								<input type="number" min="0" step="1" class="input input--width-small"
-									data-element-type="product-quantity">
-							</label>
+                  QTO
+                  <input type="number" min="0" step="1" class="input input--width-small"
+                    data-element-type="product-quantity">
+                </label>
 
               <label class="label lable--center">
-								Price*
-								<input type="number" min="0" step="any" class="input input--width-medium"
-									data-element-type="product-price">
-							</label>
+                  Price*
+                  <input type="number" min="0" step="any" class="input input--width-medium"
+                    data-element-type="product-price">
+                </label>
 
               <label class="label lable--center">
-								Total
-								<output class="output" data-element-type="product-total">0</output>
-							</label>
+                  Total
+                  <output class="output" data-element-type="product-total">0</output>
+                </label>
 
               <label class="label lable--center">
-								Delete
-								<button type="button" class="button button--light-grey button--font-dark-grey"
-									data-element-type="product-element-delete-button">
-									⌫
-								</button>
-							</label>
+                  Delete
+                  <button type="button" class="button button--light-grey button--font-dark-grey"
+                    data-element-type="product-delete-button">
+                    ⌫
+                  </button>
+                </label>
             </section>
 
+            <? if (i == 0) { ?>
           </template>
+          <? } ?>
+
+          <? } ?>
 
         </section>
 
 
         <!-- Кнопка для cоздания новой продуктов -->
 
-        <button type="button" class="button button--light-grey button--font-dark-grey "
-					data-element-type="product-element-adding-button">
+        <button type="button" class="button button--light-grey button--font-dark-grey"
+					data-element-type="product-adding-button">
 					Create Product
 				</button>
 
@@ -507,22 +585,22 @@
 
         <label class="label lable--center">
 					Subtotal
-					<output class="output subtotal--input" data-element-type="subtotal">0</output>
+					<output class="output subtotal--input" data-element-type="subtotal"><?= isNewInvoice ? 0 : subtotalValue ?></output>
 				</label>
 
         <label class="label lable--center">
 					Discount (%)
-					<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount">
+					<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount" value="<?= isNewInvoice ? '' : discountValue ?>" >
 				</label>
 
         <label class="label lable--center">
 					VAT (%)
-					<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat">
+					<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat" value="<?= isNewInvoice ? '' : vatValue ?>">
 				</label>
 
         <label class="label lable--center">
 					Total
-					<output class="output" data-element-type="total-amount">0</output>
+					<output class="output" data-element-type="total"><?= isNewInvoice ? 0 : totalValueForAllSellingProducts ?></output>
 				</label>
 
       </section>
@@ -540,17 +618,19 @@
 
     <!-- Кнопка для запуска обработчки инвойса  -->
 
-    <button type="submit" class="button button--grey">Create Invoice</button>
+    <button type="submit" class="button button--grey" data-element-type="submit-button" value="<?= isNewInvoice ? 'true' : 'false' ?>">Create Invoice</button>
 
   </form>
 
   <script>
+    
+    
     // Устанавливаем дату создания инвойса по умолчанию в форме:
 
 		document.querySelector('input[data-element-type="invoice-date"]').value = new Date().toISOString().split('T')[0];
 
 
-		// Устанавливаем секцию с первым продуктом из щаблона для заполнения пользователем его атрибутов:
+		// Устанавливаем секцию с первым продуктом из шаблона для полсдеющего заполнения пользователем:
 
 		const productElementTepmplate = document.querySelector('[data-element-type="product-template"]');
 		const productElementFragment = productElementTepmplate.content.cloneNode(true);
@@ -560,7 +640,7 @@
 		productElementList.appendChild(productElement);
 
 
-		// Подписываем корневой элемент на основные события:
+		// Подписываем корневой элемент на основные события формы для обработки соответсвующих событий внутри формы:
 
 		['click', 'input', 'change'].forEach(eventType => document.forms.invoice.addEventListener(eventType, handle));
 
@@ -583,7 +663,7 @@
 
 				// Обрабатываем нажатие кнопки "Create Product":
 
-				case (eventType == 'click' && elementType == 'product-element-adding-button'): {
+				case (eventType == 'click' && elementType == 'product-adding-button'): {
 
 
 					// Создаем новую элемент отдельного продукта из шаблона в html:
@@ -603,7 +683,7 @@
 
 				// Обрабатываем нажатие кнопки в поле "Del" (уникальный компонент):
 
-				case (eventType == 'click' && elementType == 'product-element-delete-button'): {
+				case (eventType == 'click' && elementType == 'product-delete-button'): {
 
 
 					// Удаляем позицию продукта на которой была нажата кнопка в поле "Del":
@@ -622,7 +702,7 @@
 					const vat = document.querySelector('[data-element-type="vat"]').value;
 					const subtotal = getSubtotat();
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
@@ -651,7 +731,7 @@
 					const discount = document.querySelector('[data-element-type="discount"]').value;
 					const vat = document.querySelector('[data-element-type="vat"]').value;
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
@@ -680,7 +760,7 @@
 					const discount = document.querySelector('[data-element-type="discount"]').value;
 					const vat = document.querySelector('[data-element-type="vat"]').value;
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
@@ -708,7 +788,7 @@
 
 					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total" с учетом дисконта и ват:
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
@@ -736,7 +816,7 @@
 
 					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total" с учетом дисконта и ват:
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 
@@ -745,7 +825,7 @@
 
 				// Обрабатываем выбор в выпадающем списке "From (Business Name)*"
 
-				case (eventType == 'change' && elementType == 'contractor'): {
+				case (eventType == 'change' && elementType == 'contractor-name'): {
 
 
 					// Получаем индекс выбранного "Поставщика":
@@ -767,9 +847,9 @@
 				}
 
 
-				// Обрабатываем выбор в выпадающем списке "To (Full Name / Business Name)*"
+        // Обрабатываем выбор в выпадающем списке "To (Full Name / Business Name)*"
 
-				case (eventType == 'change' && elementType == 'customer'): {
+				case (eventType == 'change' && elementType == 'customer-name'): {
 
 
 					// Получаем индекс выбранного "Клиента":
@@ -783,6 +863,88 @@
 					updateCounterpartyFileldValue('[data-element-type="customer-phone"]', selectedIndex);
 					updateCounterpartyFileldValue('[data-element-type="customer-email"]', selectedIndex);
 
+
+					break;
+				}
+
+
+				// Обрабатываем запуск отправки данных формы"
+
+				case (eventType == 'click' && elementType == 'submit-button'): {
+
+          // Собираем все даные с формы:
+
+          const productNameArray = Array.from(document.querySelectorAll('[data-element-type="product-name"]')).map(productNameElement => productNameElement.value);
+          const productDateArray = Array.from(document.querySelectorAll('[data-element-type="product-date"]')).map(productNameElement => productNameElement.value);
+          const producQuantityArray = Array.from(document.querySelectorAll('[data-element-type="product-quantity"]')).map(productNameElement => productNameElement.value);
+          const productPriceArray = Array.from(document.querySelectorAll('[data-element-type="product-price"]')).map(productNameElement => productNameElement.value);
+          const productTotalArray = Array.from(document.querySelectorAll('[data-element-type="product-total"]')).map(productNameElement => productNameElement.value);
+
+          const invoiceDataObject = {
+            invoiceNumber: document.querySelector('[data-element-type="invoice-number"]').dataset.elementValue,
+            invoiceDate: document.querySelector('[data-element-type="invoice-date"]').value,
+            contractorName: document.querySelector('[data-element-type="contractor-name"]').value,
+            customerName: document.querySelector('[data-element-type="customer-name"]').value,
+            subtotal: document.querySelector('[data-element-type="subtotal"]').value,
+            discount: document.querySelector('[data-element-type="discount"]').value,
+            vat: document.querySelector('[data-element-type="vat"]').value,
+            total: document.querySelector('[data-element-type="total"]').value,
+            comment: document.querySelector('[data-element-type="comment"]').value,
+            productArray: [ productNameArray, productDateArray, producQuantityArray, productPriceArray, productTotalArray]
+          };
+
+
+          // Проверяем данные введенные пользователем в форму:
+
+          if (invoiceDataObject.contractorName == "") {
+            alert('Please fill in the company name ( From (Business Name)* )!');
+            return;
+          }
+
+          if (invoiceDataObject.customerName == "") {
+            alert('Please fill in the client name ( To (Full Name / Business Name)* )!');
+            return;
+          }
+
+          if (productNameArray.every(productName => productName == '') && productPriceArray.every(productPrice => productPrice == '')) {
+            alert('At least one product must be filled!');
+            return;
+          }
+
+          if (productNameArray.length != new Set(productNameArray).size) {
+            alert('There should not be identical product names!');
+            return;
+          }
+
+          for (const productIndex in productNameArray) {
+            if (productNameArray[productIndex] != '' && productPriceArray[productIndex] == '') {
+              alert('There is a product position with an empty price field!');
+              return;
+            } else if (productNameArray[productIndex] == '' && productPriceArray[productIndex] != '') {
+              alert('There is a price position with an empty product field!');
+              return;
+            }
+          }
+
+
+          // Устанавлива сообщение и стиль в кнопку, что бы сообщить пользователь не закрывать её пока идет создание нового инвойс и что она закроется сама:
+
+          event.target.classList.add('button--waiting');
+          event.target.innerText = `Please don't close me, I'm creating an invoice for you and close myself when it is ready!`;
+
+
+          // Получаем цель вызова формы (создание нового инвойса или реадктирование текущего инвойса):
+
+					const isNewInvoice = event.target.getAttribute('value');
+     
+
+          // В зависимости от цели вызова формы, запускаем соответсвующую функцию:
+
+          if (isNewInvoice == 'true') {
+            makeInvoice(invoiceDataObject);
+          } else {
+            editInvoice(invoiceDataObject);
+          }
 
 					break;
 				}
@@ -875,6 +1037,45 @@
 			})
 
 		}
+
+
+    /*
+     Запускает функцию генерирующую pdf файл инвойса в корневой папке "INVOICES" google drive, перенося предыдущий инвойс в подпапку "INVOICES/ARCHIVE", 
+     сохраняя данные инвойса в соответсвующиъ реестах - листы "INVOICE REGISTRY" и "PRODUCT REGISTRY":
+    */
+
+    function makeInvoice(invoiceDataObject) {
+
+      google
+        .script
+        .run
+        .withFailureHandler(
+          (error) => {
+            google.script.host.close(); alert(`An error occurred while generating the invoice: "${error}", please try after some time!`)
+          }
+        ).withSuccessHandler(google.script.host.close)
+          .makeInvoice(invoiceDataObject);
+
+    }
+
+
+    /*
+     Запускает функцию генерирующую pdf файл обновленного инвойса в корневой папке "INVOICES" google drive, перенося предыдущий инвойс в подпапку "INVOICES/ARCHIVE", 
+     обновляя данные инвойса в соответсвующих реестах - листы "INVOICE REGISTRY" и "PRODUCT REGISTRY":
+    */
+
+    function editInvoice(invoiceDataObject) {
+
+      google
+        .script
+        .run
+        .withFailureHandler(
+          (error) => {
+            google.script.host.close(); alert(`An error occurred while generating the invoice: "${error}", please try after some time!`)
+          }
+        ).withSuccessHandler(google.script.host.close)
+          .editInvoice(invoiceDataObject);
+    }
 
   </script>
 </body>
