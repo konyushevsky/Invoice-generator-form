@@ -427,7 +427,7 @@
 					To (Full Name / Business Name)*
 					<select
 						class="input input--appearance-none input--background-corner-drawn input--overflow-hidden input--cut-down"
-						data-element-type="customer-name" required>
+						data-element-type="client-name" required>
 
             <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
               
@@ -449,7 +449,7 @@
 
           <dd
             class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="customer-address">
+            data-element-type="client-address">
             <?= clientSheetArray[i][clientColumnNamesWithIndexes.addressIndex] ?>
           </dd>
 
@@ -462,7 +462,7 @@
 
           <dd
             class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="customer-phone">
+            data-element-type="client-phone">
             <?= clientSheetArray[i][clientColumnNamesWithIndexes.phoneNumberIndex] ?>
           </dd>
 
@@ -475,7 +475,7 @@
 
           <dd
             class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="customer-email">
+            data-element-type="client-email">
             <?= clientSheetArray[i][clientColumnNamesWithIndexes.emailIndex] ?>
           </dd>
 
@@ -623,8 +623,6 @@
   </form>
 
   <script>
-    
-    
     // Устанавливаем дату создания инвойса по умолчанию в форме:
 
 		document.querySelector('input[data-element-type="invoice-date"]').value = new Date().toISOString().split('T')[0];
@@ -849,7 +847,7 @@
 
         // Обрабатываем выбор в выпадающем списке "To (Full Name / Business Name)*"
 
-				case (eventType == 'change' && elementType == 'customer-name'): {
+				case (eventType == 'change' && elementType == 'client-name'): {
 
 
 					// Получаем индекс выбранного "Клиента":
@@ -859,9 +857,9 @@
 
 					// Обновляем все значения дополнительных полей соответствующее выбранному поставщику:
 
-					updateCounterpartyFileldValue('[data-element-type="customer-address"]', selectedIndex);
-					updateCounterpartyFileldValue('[data-element-type="customer-phone"]', selectedIndex);
-					updateCounterpartyFileldValue('[data-element-type="customer-email"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="client-address"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="client-phone"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="client-email"]', selectedIndex);
 
 
 					break;
@@ -872,7 +870,18 @@
 
 				case (eventType == 'click' && elementType == 'submit-button'): {
 
+          
           // Собираем все даные с формы:
+
+          const invoiceId = document.querySelector('[data-element-type="invoice-number"]').dataset.elementValue;
+          const invoiceDate = document.querySelector('[data-element-type="invoice-date"]').value;
+          const contractorName = document.querySelector('[data-element-type="contractor-name"]').value;
+          const clientName = document.querySelector('[data-element-type="client-name"]').value;
+          const subtotal = document.querySelector('[data-element-type="subtotal"]').value;
+          const discount = document.querySelector('[data-element-type="discount"]').value / 100;
+          const vat = document.querySelector('[data-element-type="vat"]').value / 100;
+          const total = document.querySelector('[data-element-type="total"]').value;
+          const comment = document.querySelector('[data-element-type="comment"]').value;
 
           const productNameArray = Array.from(document.querySelectorAll('[data-element-type="product-name"]')).map(productNameElement => productNameElement.value);
           const productDateArray = Array.from(document.querySelectorAll('[data-element-type="product-date"]')).map(productNameElement => productNameElement.value);
@@ -880,28 +889,15 @@
           const productPriceArray = Array.from(document.querySelectorAll('[data-element-type="product-price"]')).map(productNameElement => productNameElement.value);
           const productTotalArray = Array.from(document.querySelectorAll('[data-element-type="product-total"]')).map(productNameElement => productNameElement.value);
 
-          const invoiceDataObject = {
-            invoiceNumber: document.querySelector('[data-element-type="invoice-number"]').dataset.elementValue,
-            invoiceDate: document.querySelector('[data-element-type="invoice-date"]').value,
-            contractorName: document.querySelector('[data-element-type="contractor-name"]').value,
-            customerName: document.querySelector('[data-element-type="customer-name"]').value,
-            subtotal: document.querySelector('[data-element-type="subtotal"]').value,
-            discount: document.querySelector('[data-element-type="discount"]').value,
-            vat: document.querySelector('[data-element-type="vat"]').value,
-            total: document.querySelector('[data-element-type="total"]').value,
-            comment: document.querySelector('[data-element-type="comment"]').value,
-            productArray: [ productNameArray, productDateArray, producQuantityArray, productPriceArray, productTotalArray]
-          };
-
 
           // Проверяем данные введенные пользователем в форму:
 
-          if (invoiceDataObject.contractorName == "") {
+          if (contractorName == "") {
             alert('Please fill in the company name ( From (Business Name)* )!');
             return;
           }
 
-          if (invoiceDataObject.customerName == "") {
+          if (clientName == "") {
             alert('Please fill in the client name ( To (Full Name / Business Name)* )!');
             return;
           }
@@ -927,6 +923,50 @@
           }
 
 
+          // Подгатавливаем данные для вставки на соответсвующий лист: "INVOICE REGISTRY":
+
+          const invoiceRegistryColumnNamesWithIndexes = JSON.parse( <?= JSON.stringify( invoiceRegistryColumnNamesWithIndexes ) ?> );
+
+          const invoiceRegistryArray = [[]];
+
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.idIndex] = invoiceId;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.dateIndex] = invoiceDate;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.statusIndex] = false;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.contractorNameIndex] = contractorName;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.clientNameIndex] = clientName;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.subtotalIndex] = subtotal;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.discountIndex] = discount;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.vatIndex] = vat;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.totalIndex] = total;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.commentIndex] = comment;
+
+
+          // Подгатавливаем данные для вставки на соответсвующий лист "PRODUCT REGISTRY":
+
+          const productRegistryColumnNamesWithIndexes = JSON.parse( <?= JSON.stringify( productRegistryColumnNamesWithIndexes ) ?> );
+
+          const productRegistryArray = [];
+
+          for (let i in productNameArray) {    
+            
+            const newRowArray = [];
+
+            newRowArray[productRegistryColumnNamesWithIndexes.invoiceIdIndex] = invoiceId;
+            newRowArray[productRegistryColumnNamesWithIndexes.productNameIndex] = productNameArray[i];
+            newRowArray[productRegistryColumnNamesWithIndexes.dateIndex] = productDateArray[i];
+            newRowArray[productRegistryColumnNamesWithIndexes.qtyIndex] = producQuantityArray[i] == '' ? 1 : producQuantityArray[i];
+            newRowArray[productRegistryColumnNamesWithIndexes.priceIndex] = productPriceArray[i];
+            newRowArray[productRegistryColumnNamesWithIndexes.totalIndex] = productTotalArray[i];
+        
+            productRegistryArray.push(newRowArray);
+          }
+
+
+          // Собираем все в общий массив для отправки:
+          
+          const invoiceDataObject = {invoiceRegistryArray, productRegistryArray};
+
+
           // Устанавлива сообщение и стиль в кнопку, что бы сообщить пользователь не закрывать её пока идет создание нового инвойс и что она закроется сама:
 
           event.target.classList.add('button--waiting');
@@ -936,7 +976,7 @@
           // Получаем цель вызова формы (создание нового инвойса или реадктирование текущего инвойса):
 
 					const isNewInvoice = event.target.getAttribute('value');
-     
+
 
           // В зависимости от цели вызова формы, запускаем соответсвующую функцию:
 
