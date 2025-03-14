@@ -405,13 +405,13 @@
 
               <label class="label lable--center">
                   QTO
-                  <input type="number" min="0" step="1" class="input input--width-small"
+                  <input type="number" min="0" step="1" placeholder="0" class="input input--width-small"
                     data-element-type="product-quantity">
                 </label>
 
               <label class="label lable--center">
                   Price*
-                  <input type="number" min="0" step="any" class="input input--width-medium"
+                  <input type="number" min="0" step="any" placeholder="0.00" class="input input--width-medium"
                     data-element-type="product-price">
                 </label>
 
@@ -455,12 +455,12 @@
 
         <label class="label lable--center">
 					Discount (%)
-					<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount">
+					<input type="number" min="0" step="any" placeholder="0.00" class="input input--width-medium" data-element-type="discount">
 				</label>
 
         <label class="label lable--center">
 					VAT (%)
-					<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat">
+					<input type="number" min="0" step="any" placeholder="0.00" class="input input--width-medium" data-element-type="vat">
 				</label>
 
         <label class="label lable--center">
@@ -500,8 +500,7 @@
       productSheetObject, 
       invoiceRegistryColumnNamesWithIndexes, 
       productRegistryColumnNamesWithIndexes
-    } = JSON.parse( /* <?= */  externalDataObject /* ?> */ ); // раскоментировать для импорта объекта из внешнего источника
-
+    } = JSON.parse( /* <?= */ externalDataObject /*?>*/ ); // Раскоментировать, что бы получить внешние данные;
 
     // Устанавливаем дату создания инвойса по умолчанию в форме:
 
