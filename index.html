@@ -282,9 +282,7 @@
 
     <!-- Заголовок инвойса -->
 
-    <h1 class="title form__title" data-element-type="invoice-number" data-element-value="<?= invoiceNumber ?>">Invoice №
-      <?= invoiceNumber?> <?= isNewInvoice ? '(new)' : '(being edited)' ?>
-    </h1>
+    <h1 class="title form__title" data-element-type="invoice-number">Invoice №</h1>
 
 
     <!-- Общий раздел дл ввода данных -->
@@ -308,110 +306,32 @@
 					From (Business Name)*
 					<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden"
 						data-element-type="contractor-name" required>
-
-            <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
-              
-              <option <?= (isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? 'selected' : '' ?> >
-                <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.companieNameIndex] ?>
-              </option>
-
-            <? } ?>
-
+              <option></option>
 					</select>
 				</label>
 
         <dl class="addition">
 
+					<dt class="term">Full Address:</dt>
+					<dd class="details" data-element-type="contractor-address">➥</dd>
 
-          <dt class="term">Full Address:</dt>
+					<dt class="term">Phone Number:</dt>
+					<dd class="details" data-element-type="contractor-phone">➥</dd>
 
-          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
+					<dt class="term">Email:</dt>
+					<dd class="details" data-element-type="contractor-email">➥</dd>
 
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="contractor-address">
-            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.addressIndex] ?>
-          </dd>
+					<dt class="term">Bank Name:</dt>
+					<dd class="details" data-element-type="contractor-bank-name">➥</dd>
 
-          <? } ?>
+					<dt class="term">Sort Number:</dt>
+					<dd class="details" data-element-type="contractor-sort-number">➥</dd>
 
+					<dt class="term">Account Number:</dt>
+					<dd class="details" data-element-type="contractor-account-number">➥</dd>
 
-          <dt class="term">Phone Number:</dt>
-
-          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="contractor-phone">
-            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.phoneNumberIndex] ?>
-          </dd>
-
-          <? } ?>
-
-
-          <dt class="term">Email:</dt>
-
-          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="contractor-email">
-            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.emailIndex] ?>
-          </dd>
-
-          <? } ?>
-
-
-          <dt class="term">Bank Name:</dt>
-
-          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="contractor-bank-name">
-            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.bankNameIndex] ?>
-          </dd>
-
-          <? } ?>
-
-
-          <dt class="term">Sort Number:</dt>
-
-          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="contractor-sort-number">
-            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.sortNumberIndex] ?>
-          </dd>
-
-          <? } ?>
-
-
-          <dt class="term">Account Number:</dt>
-
-          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="contractor-account-number">
-            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.accountNumberIndex] ?>
-          </dd>
-
-          <? } ?>
-
-
-          <dt class="term">Alternative Method:</dt>
-
-          <? for (let i = 0; i < myCompanieSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == companySelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="contractor-alternative-method">
-            <?= myCompanieSheetArray[i][myCompanieColumnNamesWithIndexes.alternativeMethodIndex] ?>
-          </dd>
-
-          <? } ?>
+					<dt class="term">Alternative Method:</dt>
+					<dd class="details" data-element-type="contractor-alternative-method">➥</dd>
 
         </dl>
 
@@ -428,58 +348,21 @@
 						class="input input--appearance-none input--background-corner-drawn input--overflow-hidden input--cut-down"
 						data-element-type="client-name" required>
 
-            <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
-              
-              <option <?= (isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? 'selected' : '' ?> >
-                <?= clientSheetArray[i][clientColumnNamesWithIndexes.clientNameIndex] ?>
-              </option>
-
-            <? } ?>
+            <option></option>
 
 					</select>
 				</label>
 
         <dl class="addition">
 
+					<dt class="term">Full Address:</dt>
+					<dd class="details" data-element-type="client-address">➥</dd>
 
-          <dt class="term">Full Address:</dt>
+					<dt class="term">Phone Number:</dt>
+					<dd class="details" data-element-type="client-phone">➥</dd>
 
-          <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="client-address">
-            <?= clientSheetArray[i][clientColumnNamesWithIndexes.addressIndex] ?>
-          </dd>
-
-          <? } ?>
-
-
-          <dt class="term">Phone Number:</dt>
-
-          <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="client-phone">
-            <?= clientSheetArray[i][clientColumnNamesWithIndexes.phoneNumberIndex] ?>
-          </dd>
-
-          <? } ?>
-
-
-          <dt class="term">Email:</dt>
-
-          <? for (let i = 0; i < clientSheetArray.length; i++) { ?>
-
-          <dd
-            class="details <?=(isNewInvoice && i == 0) || (isNewInvoice == false && i == clientSelectedIndex) ? '' : 'details--display-none' ?>"
-            data-element-type="client-email">
-            <?= clientSheetArray[i][clientColumnNamesWithIndexes.emailIndex] ?>
-          </dd>
-
-          <? } ?>
-
+					<dt class="term">Email:</dt>
+					<dd class="details" data-element-type="client-email">➥</dd>
 
         </dl>
 
@@ -498,14 +381,7 @@
 
           <!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
 
-          <? for (let i = 0; i < sellingProductListArray.length; i++) { ?>
-
-
-          <? if (i == 0) {  ?>
-
           <template data-element-type="product-template">
-
-            <? } ?>
 
 
             <section class="product" data-element-type="product">
@@ -514,14 +390,8 @@
                   Product*
 
                   <select class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down" data-element-type="product-name">
-
-                    <? for (let k = 0; k < productSheetArray.length; k++) { ?>
               
-                      <option <?= (isNewInvoice && k == 0) || (isNewInvoice == false && k == sellingProductSelectedIndex) ? 'selected' : '' ?> >
-                        <?= productSheetArray[k][productColumnNamesWithIndexes.productNameIndex] ?>
-                      </option>
-
-                    <? } ?>
+                      <option></option>
 
                   </select>
 
@@ -559,11 +429,7 @@
                 </label>
             </section>
 
-            <? if (i == 0) { ?>
           </template>
-          <? } ?>
-
-          <? } ?>
 
         </section>
 
@@ -584,22 +450,22 @@
 
         <label class="label lable--center">
 					Subtotal
-					<output class="output subtotal--input" data-element-type="subtotal"><?= isNewInvoice ? 0 : subtotalValue ?></output>
+					<output class="output subtotal--input" data-element-type="subtotal">0</output>
 				</label>
 
         <label class="label lable--center">
 					Discount (%)
-					<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount" value="<?= isNewInvoice ? '' : discountValue ?>" >
+					<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount">
 				</label>
 
         <label class="label lable--center">
 					VAT (%)
-					<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat" value="<?= isNewInvoice ? '' : vatValue ?>">
+					<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat">
 				</label>
 
         <label class="label lable--center">
 					Total
-					<output class="output" data-element-type="total"><?= isNewInvoice ? 0 : totalValueForAllSellingProducts ?></output>
+					<output class="output" data-element-type="total">0</output>
 				</label>
 
       </section>
@@ -617,25 +483,96 @@
 
     <!-- Кнопка для запуска обработчки инвойса  -->
 
-    <button type="submit" class="button button--grey" data-element-type="submit-button" value="<?= isNewInvoice ? 'true' : 'false' ?>">Create Invoice</button>
+    <button type="submit" class="button button--grey" data-element-type="submit-button">Create Invoice</button>
 
   </form>
 
   <script>
+
+
+    // Получаем данные сформированные на строне app script:
+
+    const {
+      invoiceNumber, 
+      isNewInvoice, 
+      contractorSheetObject, 
+      clientSheetObject, 
+      productSheetObject, 
+      invoiceRegistryColumnNamesWithIndexes, 
+      productRegistryColumnNamesWithIndexes
+    } = JSON.parse( /* <?= */  externalDataObject /* ?> */ ); // раскоментировать для импорта объекта из внешнего источника
+
+
     // Устанавливаем дату создания инвойса по умолчанию в форме:
 
 		document.querySelector('input[data-element-type="invoice-date"]').value = new Date().toISOString().split('T')[0];
 
 
+    // Устанавливаем номер инвойса в заголовке формы и текст показывающий пользователю новый это инвойс или в данный момент редактируемый:
+
+    const invoiceHeaderElement = document.querySelector('[data-element-type="invoice-number"]')
+    invoiceHeaderElement.innerText = `${invoiceHeaderElement.textContent} ${invoiceNumber} (${isNewInvoice == true ? 'new' : 'being edited'})`;
+
+
+    // Наполняем выпадающих список элементов для подрядчика и соответствующие дополнительные поля с описанием:
+
+    const contractorSheetArray = contractorSheetObject.contractorSheetArray;
+    const contractorColumnNamesWithIndexes = contractorSheetObject.contractorColumnNamesWithIndexes;
+
+    const contractorNameElement = document.querySelector('[data-element-type="contractor-name"]');
+    
+    contractorSheetArray.forEach(contractorRowArray => {
+      const option = document.createElement("option");
+      option.text = contractorRowArray[contractorColumnNamesWithIndexes.companieNameIndex];
+      contractorNameElement.appendChild(option);
+    })
+
+    addDescriptionElement('[data-element-type="contractor-address"]', contractorSheetArray, contractorColumnNamesWithIndexes.addressIndex, 'contractor-address');
+    addDescriptionElement('[data-element-type="contractor-phone"]', contractorSheetArray, contractorColumnNamesWithIndexes.phoneNumberIndex, 'contractor-phone');
+    addDescriptionElement('[data-element-type="contractor-email"]', contractorSheetArray, contractorColumnNamesWithIndexes.emailIndex, 'contractor-email');
+    addDescriptionElement('[data-element-type="contractor-bank-name"]', contractorSheetArray, contractorColumnNamesWithIndexes.bankNameIndex, 'contractor-bank-name');
+    addDescriptionElement('[data-element-type="contractor-sort-number"]', contractorSheetArray, contractorColumnNamesWithIndexes.sortNumberIndex, 'contractor-sort-number');
+    addDescriptionElement('[data-element-type="contractor-account-number"]', contractorSheetArray, contractorColumnNamesWithIndexes.accountNumberIndex, 'contractor-account-number');
+    addDescriptionElement('[data-element-type="contractor-alternative-method"]', contractorSheetArray, contractorColumnNamesWithIndexes.alternativeMethodIndex, 'contractor-alternative-method');
+
+
+    // Наполняем выпадающих список элементов для клиента и дополнительные пол] с описанием:
+
+    const clientSheetArray = clientSheetObject.clientSheetArray;
+    const clientColumnNamesWithIndexes = clientSheetObject.clientColumnNamesWithIndexes;
+
+    const clientNameElement = document.querySelector('[data-element-type="client-name"]');
+    
+    clientSheetArray.forEach(clientRowArray => {
+      const option = document.createElement("option");
+      option.text = clientRowArray[clientColumnNamesWithIndexes.clientNameIndex];
+      clientNameElement.appendChild(option);
+    })
+
+    addDescriptionElement('[data-element-type="client-address"]', clientSheetArray, clientColumnNamesWithIndexes.addressIndex, 'client-address');
+    addDescriptionElement('[data-element-type="client-phone"]', clientSheetArray, clientColumnNamesWithIndexes.phoneNumberIndex, 'client-phone');
+    addDescriptionElement('[data-element-type="client-email"]', clientSheetArray, clientColumnNamesWithIndexes.emailIndex, 'client-email');
+
+
 		// Устанавливаем секцию с первым продуктом из шаблона для полсдеющего заполнения пользователем:
 
 		const productElementTepmplate = document.querySelector('[data-element-type="product-template"]');
-		const productElementFragment = productElementTepmplate.content.cloneNode(true);
+    const productSheetArray = productSheetObject.productSheetArray;
+    const productColumnNamesWithIndexes = productSheetObject.productColumnNamesWithIndexes;
+
+    const productNameElement = productElementTepmplate.content.querySelector('[data-element-type="product-name"]');
+    productSheetArray.forEach(productRowArray => {
+      const option = document.createElement("option");
+      option.text = productRowArray[productColumnNamesWithIndexes.productNameIndex];
+      productNameElement.appendChild(option);
+    });
+		
+    const productElementFragment = productElementTepmplate.content.cloneNode(true);
 		const productElement = productElementFragment.firstElementChild;
 		const productElementList = document.querySelector('[data-element-type="product-list"]')
 
 		productElementList.appendChild(productElement);
-
+    
 
 		// Подписываем корневой элемент на основные события формы для обработки соответсвующих событий внутри формы:
 
@@ -872,7 +809,7 @@
           
           // Собираем все даные с формы:
 
-          const invoiceId = document.querySelector('[data-element-type="invoice-number"]').dataset.elementValue;
+          const invoiceId = invoiceNumber;
           const invoiceDate = document.querySelector('[data-element-type="invoice-date"]').value;
           const contractorName = document.querySelector('[data-element-type="contractor-name"]').value;
           const clientName = document.querySelector('[data-element-type="client-name"]').value;
@@ -924,8 +861,6 @@
 
           // Подгатавливаем данные для вставки на соответсвующий лист: "INVOICE REGISTRY":
 
-          const invoiceRegistryColumnNamesWithIndexes = JSON.parse( <?= JSON.stringify( invoiceRegistryColumnNamesWithIndexes ) ?> );
-
           const invoiceRegistryArray = [[]];
 
           invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.idIndex] = invoiceId;
@@ -941,8 +876,6 @@
 
 
           // Подгатавливаем данные для вставки на соответсвующий лист "PRODUCT REGISTRY":
-
-          const productRegistryColumnNamesWithIndexes = JSON.parse( <?= JSON.stringify( productRegistryColumnNamesWithIndexes ) ?> );
 
           const productRegistryArray = [];
 
@@ -972,14 +905,9 @@
           event.target.innerText = `Please don't close me, I'm creating an invoice for you and close myself when it is ready!`;
 
 
-          // Получаем цель вызова формы (создание нового инвойса или реадктирование текущего инвойса):
-
-					const isNewInvoice = event.target.getAttribute('value');
-
-
           // В зависимости от цели вызова формы, запускаем соответсвующую функцию:
 
-          if (isNewInvoice == 'true') {
+          if (isNewInvoice == true) {
             makeInvoice(invoiceDataObject);
           } else {
             editInvoice(invoiceDataObject);
@@ -1076,6 +1004,31 @@
 			})
 
 		}
+
+
+    // Заполняет жлементами описания контрагентов в соответствии с порядком в массиве на листах с подрядчиком и контрагентом:
+
+    function addDescriptionElement(selector, sheetArray, cloumnIndex, elementType) {
+
+      const startDescriptionElement = document.querySelector(`${selector}`);
+      
+      let nextDescriptionElement;
+
+      sheetArray.forEach((sheetRowArray, index) => {
+        const descriptionElement = document.createElement("dd");
+        descriptionElement.classList.add("details")
+        descriptionElement.classList.add("details--display-none")
+        descriptionElement.textContent = sheetRowArray[cloumnIndex];
+        descriptionElement.dataset.elementType = `${elementType}`;
+
+        index == 0 ?
+          startDescriptionElement.insertAdjacentElement('afterend', descriptionElement) :
+          nextDescriptionElement.insertAdjacentElement('afterend', descriptionElement)
+
+        nextDescriptionElement = descriptionElement;
+      })
+
+    }
 
 
     /*
