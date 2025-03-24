@@ -1,23 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Invoice Form</title>
+  <base target="_top">
+
   <style>
-
-		body {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			width: 100vw;
-			height: 100vh;
-			background-color: #454343;
-
-		}
-
-
     /* Основные цвета и размеры шрифтов */
 
     :root {
@@ -50,7 +37,7 @@
       flex-direction: column;
       gap: 32px;
       border-radius: 26px;
-      padding: 46px;
+      padding: 0;
       background-color: var(--white-color);
     }
 
@@ -68,7 +55,6 @@
       align-content: space-between;
       gap: 24px;
       height: 452px;
-			width: 1152px;
     }
 
 
@@ -256,6 +242,11 @@
       appearance: none;
     }
 
+    .input--appearance-none::-webkit-outer-spin-button,
+    .input--appearance-none::-webkit-inner-spin-button {
+      appearance: none;
+    }
+
     .input--overflow-hidden {
       overflow: hidden;
     }
@@ -291,286 +282,304 @@
 
 <body>
 
-	<form class="form" name="invoice">
+  <form class="form" name="invoice">
 
 
-		<!-- Заголовок иновойса -->
+    <!-- Заголовок инвойса -->
 
-		<h1 class="title form__title">New Invoice № 1234</h1>
-
-
-		<!-- Общий раздел дл ввода данных -->
-
-		<section class="content">
+    <h1 class="title form__title" data-element-type="invoice-number">Invoice №</h1>
 
 
-			<!-- Подраздел с вводом даты создания/обновления инвойса (по умолчанию текущая) -->
+    <!-- Общий раздел дл ввода данных -->
 
-			<label class="label">
+    <section class="content">
+
+
+      <!-- Подраздел с вводом даты создания/обновления инвойса (по умолчанию текущая) -->
+
+      <label class="label">
 				Date (Сurrent by default)*
 				<input type="date" class="input input--width-large" data-element-type="invoice-date">
 			</label>
 
 
-			<!-- Подраздел с инофрмацией о подрядчике -->
+      <!-- Подраздел с инофрмацией о подрядчике -->
 
-			<section class="counterparty">
+      <section class="counterparty">
 
-				<label class="label">
+        <label class="label">
 					From (Business Name)*
 					<select class="input input--appearance-none input--background-corner-drawn input--overflow-hidden"
-						data-element-type="contractor">
-						<option selected>&nbsp;</option>
-						<option>Gera Evtukhova</option>
-						<option>Flight Pilates</option>
+						data-element-type="contractor-name" required>
+              <option></option>
 					</select>
 				</label>
 
-				<dl class="addition">
-
+        <dl class="addition">
 
 					<dt class="term">Full Address:</dt>
-
 					<dd class="details" data-element-type="contractor-address">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-address">17 ashdene rd</dd>
-					<dd class="details details--display-none" data-element-type="contractor-address">London, Hogvards
-						Street11-11
-					</dd>
-
 
 					<dt class="term">Phone Number:</dt>
-
 					<dd class="details" data-element-type="contractor-phone">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-phone">+7801482145</dd>
-					<dd class="details details--display-none" data-element-type="contractor-phone">+7945623451</dd>
-
 
 					<dt class="term">Email:</dt>
-
 					<dd class="details" data-element-type="contractor-email">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-email">olyaevt23@gmail.com</dd>
-					<dd class="details details--display-none" data-element-type="contractor-email">flightpilates@gmail.com</dd>
-
 
 					<dt class="term">Bank Name:</dt>
-
 					<dd class="details" data-element-type="contractor-bank-name">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-bank-name">lloyds</dd>
-					<dd class="details details--display-none" data-element-type="contractor-bank-name">RF</dd>
-
 
 					<dt class="term">Sort Number:</dt>
-
 					<dd class="details" data-element-type="contractor-sort-number">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-sort-number">30-99-08</dd>
-					<dd class="details details--display-none" data-element-type="contractor-sort-number">234553</dd>
-
 
 					<dt class="term">Account Number:</dt>
-
 					<dd class="details" data-element-type="contractor-account-number">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-account-number">21230660</dd>
-					<dd class="details details--display-none" data-element-type="contractor-account-number">3233434222243</dd>
-
 
 					<dt class="term">Alternative Method:</dt>
-
 					<dd class="details" data-element-type="contractor-alternative-method">➥</dd>
-					<dd class="details details--display-none" data-element-type="contractor-alternative-method">PayPal</dd>
-					<dd class="details details--display-none" data-element-type="contractor-alternative-method">Stripe</dd>
 
-				</dl>
+        </dl>
 
-			</section>
+      </section>
 
 
-			<!-- Подраздел с информацией о заказчике -->
+      <!-- Подраздел с информацией о заказчике -->
 
-			<section class="counterparty">
+      <section class="counterparty">
 
-				<label class="label">
+        <label class="label">
 					To (Full Name / Business Name)*
 					<select
 						class="input input--appearance-none input--background-corner-drawn input--overflow-hidden input--cut-down"
-						data-element-type="customer">
+						data-element-type="client-name" required>
 
-						<option selected>&nbsp;</option>
-						<option>Aerialactive</option>
-						<option>Kolya Hverasev</option>
-						<option>Anna Svaeva</option>
+            <option></option>
 
 					</select>
 				</label>
 
-				<dl class="addition">
-
+        <dl class="addition">
 
 					<dt class="term">Full Address:</dt>
-
-					<dd class="details" data-element-type="customer-address">➥</dd>
-					<dd class="details details--display-none" data-element-type="customer-address">15 harwood rd</dd>
-					<dd class="details details--display-none" data-element-type="customer-address">Kopengagen, Street Pronto
-						Avenu 14-10</dd>
-					<dd class="details details--display-none" data-element-type="customer-address">London, Street Kratova Avenu
-						34-5</dd>
-
+					<dd class="details" data-element-type="client-address">➥</dd>
 
 					<dt class="term">Phone Number:</dt>
-
-					<dd class="details" data-element-type="customer-phone">➥</dd>
-					<dd class="details details--display-none" data-element-type="customer-phone">+7984341476</dd>
-					<dd class="details details--display-none" data-element-type="customer-phone">+32134422442</dd>
-					<dd class="details details--display-none" data-element-type="customer-phone">+12343121446</dd>
-
+					<dd class="details" data-element-type="client-phone">➥</dd>
 
 					<dt class="term">Email:</dt>
+					<dd class="details" data-element-type="client-email">➥</dd>
 
-					<dd class="details" data-element-type="customer-email">➥</dd>
-					<dd class="details details--display-none" data-element-type="customer-email">aerialfitness@aol.com</dd>
-					<dd class="details details--display-none" data-element-type="customer-email">kolyavarasev@gmail.com</dd>
-					<dd class="details details--display-none" data-element-type="customer-email">AnnaSvaeva@gmail.com</dd>
+        </dl>
 
-				</dl>
-
-			</section>
+      </section>
 
 
-			<!-- Секция в которой генерируются позиции продуктов -->
+      <!-- Секция в которой генерируются позиции продуктов -->
 
-			<section class="product-area">
-
-
-				<!-- Секция со списком продуктов  -->
-
-				<section class="product-list product-list--empty" data-element-type="product-list">
+      <section class="product-area">
 
 
-					<!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
+        <!-- Секция со списком продуктов  -->
 
-					<template data-element-type="product-template">
-
-						<section class="product" data-element-type="product">
-
-							<label class="label lable--center">
-								Product*
-								<select
-									class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down">
-									<option selected>&nbsp;</option>
-									<option>teaching</option>
-									<option>private class (hire)</option>
-									<option>Teaching of airdancing with pole</option>
-									<option>Consultation</option>
-								</select>
-							</label>
-
-							<label class="label lable--center">
-								Date
-								<input type="date" class="input input--width-large">
-							</label>
-
-							<label class="label lable--center">
-								QTO
-								<input type="number" min="0" step="1" class="input input--width-small"
-									data-element-type="product-quantity">
-							</label>
-
-							<label class="label lable--center">
-								Price*
-								<input type="number" min="0" step="any" class="input input--width-medium"
-									data-element-type="product-price">
-							</label>
-
-							<label class="label lable--center">
-								Total
-								<output class="output" data-element-type="product-total">0</output>
-							</label>
-
-							<label class="label lable--center">
-								Delete
-								<button type="button" class="button button--light-grey button--font-dark-grey"
-									data-element-type="product-element-delete-button">
-									⌫
-								</button>
-							</label>
-						</section>
-
-					</template>
-
-				</section>
+        <section class="product-list product-list--empty" data-element-type="product-list">
 
 
-				<!-- Кнопка для cоздания новой продуктов -->
+          <!-- Секция с продуктом, используемая как шаблон из которого она создается при первой загрузки формы и в последующем при нажатии на кнопку "Create Product" -->
 
-				<button type="button" class="button button--light-grey button--font-dark-grey "
-					data-element-type="product-element-adding-button">
+          <template data-element-type="product-template">
+
+
+            <section class="product" data-element-type="product">
+
+              <label class="label lable--center">
+                  Product*
+
+                  <select class="input input--appearance-none input--background-corner-drawn input--width-extra-large input--overflow-hidden input--cut-down" data-element-type="product-name">
+              
+                      <option></option>
+
+                  </select>
+
+                </label>
+
+              <label class="label lable--center">
+                  Date
+                  <input type="date" class="input input--width-large" 
+                  data-element-type="product-date">
+                </label>
+
+              <label class="label lable--center">
+                  QTO
+                  <input type="number" min="0" step="1" placeholder="0" class="input input--appearance-none input--width-small"
+                    data-element-type="product-quantity">
+                </label>
+
+              <label class="label lable--center">
+                  Price*
+                  <input type="number" min="0" step="any" placeholder="0.00" class="input input--appearance-none input--width-medium"
+                    data-element-type="product-price">
+                </label>
+
+              <label class="label lable--center">
+                  Total
+                  <output class="output" data-element-type="product-total">0</output>
+                </label>
+
+              <label class="label lable--center">
+                  Delete
+                  <button type="button" class="button button--light-grey button--font-dark-grey"
+                    data-element-type="product-delete-button">
+                    ⌫
+                  </button>
+                </label>
+            </section>
+
+          </template>
+
+        </section>
+
+
+        <!-- Кнопка для cоздания новой продуктов -->
+
+        <button type="button" class="button button--light-grey button--font-dark-grey"
+					data-element-type="product-adding-button">
 					Create Product
 				</button>
 
-			</section>
+      </section>
 
 
-			<!-- Подраздел с вычислением итогов по услугам -->
+      <!-- Подраздел с вычислением итогов по услугам -->
 
-			<section class="calculation content__calculation">
+      <section class="calculation content__calculation">
 
-				<label class="label lable--center">
+        <label class="label lable--center">
 					Subtotal
 					<output class="output subtotal--input" data-element-type="subtotal">0</output>
 				</label>
 
-				<label class="label lable--center">
+        <label class="label lable--center">
 					Discount (%)
-					<input type="number" min="0" step="any" class="input input--width-medium" data-element-type="discount">
+					<input type="number" min="0" step="any" placeholder="0.00" class="input input--appearance-none input--width-medium" data-element-type="discount">
 				</label>
 
-				<label class="label lable--center">
+        <label class="label lable--center">
 					VAT (%)
-					<input type="number" min="0" step="any" class="input input--width-small" data-element-type="vat">
+					<input type="number" min="0" step="any" placeholder="0.00" class="input input--appearance-none input--width-medium" data-element-type="vat">
 				</label>
 
-				<label class="label lable--center">
+        <label class="label lable--center">
 					Total
-					<output class="output" data-element-type="total-amount">0</output>
+					<output class="output" data-element-type="total">0</output>
 				</label>
 
-			</section>
+      </section>
 
 
-			<!-- Комментарий к созданным услугам -->
+      <!-- Комментарий к созданным услугам -->
 
-			<label class="label">Comment
+      <label class="label">Comment
 				<input type="text" class="input" data-element-type="comment">
 			</label>
 
 
-		</section>
+    </section>
 
 
-		<!-- Кнопка для запуска обработчки инвойса  -->
+    <!-- Кнопка для запуска обработчки инвойса  -->
 
-		<button type="submit" class="button button--grey">Create Invoice</button>
+    <button type="submit" class="button button--grey" data-element-type="submit-button">Create Invoice</button>
 
-	</form>
+  </form>
 
-	<script>
+  <script>
 
 
-		// Устанавливаем дату создания инвойса по умолчанию в форме:
+    // Получаем данные сформированные на строне app script:
+
+    const {
+      invoiceNumber, 
+      isNewInvoice, 
+      contractorSheetObject, 
+      clientSheetObject, 
+      productSheetObject, 
+      invoiceRegistryColumnNamesWithIndexes, 
+      productRegistryColumnNamesWithIndexes
+    } = JSON.parse( /*<?= externalDataObject ?>*/ );
+
+
+    // Устанавливаем дату создания инвойса по умолчанию в форме:
 
 		document.querySelector('input[data-element-type="invoice-date"]').value = new Date().toISOString().split('T')[0];
 
 
-		// Устанавливаем секцию с первым продуктом из щаблона для заполнения пользователем его атрибутов:
+    // Устанавливаем номер инвойса в заголовке формы и текст показывающий пользователю новый это инвойс или в данный момент редактируемый:
+
+    const invoiceHeaderElement = document.querySelector('[data-element-type="invoice-number"]')
+    invoiceHeaderElement.innerText = `${invoiceHeaderElement.textContent} ${invoiceNumber} (${isNewInvoice == true ? 'new' : 'being edited'})`;
+
+
+    // Наполняем выпадающих список элементов для подрядчика и соответствующие дополнительные поля с описанием:
+
+    const contractorSheetArray = contractorSheetObject.contractorSheetArray;
+    const contractorColumnNamesWithIndexes = contractorSheetObject.contractorColumnNamesWithIndexes;
+
+    const contractorNameElement = document.querySelector('[data-element-type="contractor-name"]');
+    
+    contractorSheetArray.forEach(contractorRowArray => {
+      const option = document.createElement("option");
+      option.text = contractorRowArray[contractorColumnNamesWithIndexes.companieNameIndex];
+      contractorNameElement.appendChild(option);
+    })
+
+    addDescriptionElement('[data-element-type="contractor-address"]', contractorSheetArray, contractorColumnNamesWithIndexes.addressIndex, 'contractor-address');
+    addDescriptionElement('[data-element-type="contractor-phone"]', contractorSheetArray, contractorColumnNamesWithIndexes.phoneNumberIndex, 'contractor-phone');
+    addDescriptionElement('[data-element-type="contractor-email"]', contractorSheetArray, contractorColumnNamesWithIndexes.emailIndex, 'contractor-email');
+    addDescriptionElement('[data-element-type="contractor-bank-name"]', contractorSheetArray, contractorColumnNamesWithIndexes.bankNameIndex, 'contractor-bank-name');
+    addDescriptionElement('[data-element-type="contractor-sort-number"]', contractorSheetArray, contractorColumnNamesWithIndexes.sortNumberIndex, 'contractor-sort-number');
+    addDescriptionElement('[data-element-type="contractor-account-number"]', contractorSheetArray, contractorColumnNamesWithIndexes.accountNumberIndex, 'contractor-account-number');
+    addDescriptionElement('[data-element-type="contractor-alternative-method"]', contractorSheetArray, contractorColumnNamesWithIndexes.alternativeMethodIndex, 'contractor-alternative-method');
+
+
+    // Наполняем выпадающих список элементов для клиента и дополнительные пол] с описанием:
+
+    const clientSheetArray = clientSheetObject.clientSheetArray;
+    const clientColumnNamesWithIndexes = clientSheetObject.clientColumnNamesWithIndexes;
+
+    const clientNameElement = document.querySelector('[data-element-type="client-name"]');
+    
+    clientSheetArray.forEach(clientRowArray => {
+      const option = document.createElement("option");
+      option.text = clientRowArray[clientColumnNamesWithIndexes.clientNameIndex];
+      clientNameElement.appendChild(option);
+    })
+
+    addDescriptionElement('[data-element-type="client-address"]', clientSheetArray, clientColumnNamesWithIndexes.addressIndex, 'client-address');
+    addDescriptionElement('[data-element-type="client-phone"]', clientSheetArray, clientColumnNamesWithIndexes.phoneNumberIndex, 'client-phone');
+    addDescriptionElement('[data-element-type="client-email"]', clientSheetArray, clientColumnNamesWithIndexes.emailIndex, 'client-email');
+
+
+		// Устанавливаем секцию с первым продуктом из шаблона для полсдеющего заполнения пользователем:
 
 		const productElementTepmplate = document.querySelector('[data-element-type="product-template"]');
-		const productElementFragment = productElementTepmplate.content.cloneNode(true);
+    const productSheetArray = productSheetObject.productSheetArray;
+    const productColumnNamesWithIndexes = productSheetObject.productColumnNamesWithIndexes;
+
+    const productNameElement = productElementTepmplate.content.querySelector('[data-element-type="product-name"]');
+    productSheetArray.forEach(productRowArray => {
+      const option = document.createElement("option");
+      option.text = productRowArray[productColumnNamesWithIndexes.productNameIndex];
+      productNameElement.appendChild(option);
+    });
+		
+    const productElementFragment = productElementTepmplate.content.cloneNode(true);
 		const productElement = productElementFragment.firstElementChild;
 		const productElementList = document.querySelector('[data-element-type="product-list"]')
 
 		productElementList.appendChild(productElement);
+    
 
-
-		// Подписываем корневой элемент на основные события:
+		// Подписываем корневой элемент на основные события формы для обработки соответсвующих событий внутри формы:
 
 		['click', 'input', 'change'].forEach(eventType => document.forms.invoice.addEventListener(eventType, handle));
 
@@ -593,7 +602,7 @@
 
 				// Обрабатываем нажатие кнопки "Create Product":
 
-				case (eventType == 'click' && elementType == 'product-element-adding-button'): {
+				case (eventType == 'click' && elementType == 'product-adding-button'): {
 
 
 					// Создаем новую элемент отдельного продукта из шаблона в html:
@@ -613,7 +622,7 @@
 
 				// Обрабатываем нажатие кнопки в поле "Del" (уникальный компонент):
 
-				case (eventType == 'click' && elementType == 'product-element-delete-button'): {
+				case (eventType == 'click' && elementType == 'product-delete-button'): {
 
 
 					// Удаляем позицию продукта на которой была нажата кнопка в поле "Del":
@@ -632,7 +641,7 @@
 					const vat = document.querySelector('[data-element-type="vat"]').value;
 					const subtotal = getSubtotat();
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
@@ -661,7 +670,7 @@
 					const discount = document.querySelector('[data-element-type="discount"]').value;
 					const vat = document.querySelector('[data-element-type="vat"]').value;
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
@@ -690,7 +699,7 @@
 					const discount = document.querySelector('[data-element-type="discount"]').value;
 					const vat = document.querySelector('[data-element-type="vat"]').value;
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
@@ -718,7 +727,7 @@
 
 					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total" с учетом дисконта и ват:
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 				}
@@ -746,7 +755,7 @@
 
 					// Устаналвивае общую сумму позиции для всех элементов в одноименное поле "Total" с учетом дисконта и ват:
 
-					document.querySelector('[data-element-type="total-amount"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
+					document.querySelector('[data-element-type="total"]').textContent = getAllProductTotal(discount, vat, subtotal).toFixed(2);
 
 					break;
 
@@ -755,7 +764,7 @@
 
 				// Обрабатываем выбор в выпадающем списке "From (Business Name)*"
 
-				case (eventType == 'change' && elementType == 'contractor'): {
+				case (eventType == 'change' && elementType == 'contractor-name'): {
 
 
 					// Получаем индекс выбранного "Поставщика":
@@ -777,9 +786,9 @@
 				}
 
 
-				// Обрабатываем выбор в выпадающем списке "To (Full Name / Business Name)*"
+        // Обрабатываем выбор в выпадающем списке "To (Full Name / Business Name)*"
 
-				case (eventType == 'change' && elementType == 'customer'): {
+				case (eventType == 'change' && elementType == 'client-name'): {
 
 
 					// Получаем индекс выбранного "Клиента":
@@ -789,10 +798,125 @@
 
 					// Обновляем все значения дополнительных полей соответствующее выбранному поставщику:
 
-					updateCounterpartyFileldValue('[data-element-type="customer-address"]', selectedIndex);
-					updateCounterpartyFileldValue('[data-element-type="customer-phone"]', selectedIndex);
-					updateCounterpartyFileldValue('[data-element-type="customer-email"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="client-address"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="client-phone"]', selectedIndex);
+					updateCounterpartyFileldValue('[data-element-type="client-email"]', selectedIndex);
 
+
+					break;
+				}
+
+
+				// Обрабатываем запуск отправки данных формы"
+
+				case (eventType == 'click' && elementType == 'submit-button'): {
+
+          
+          // Собираем все даные с формы:
+
+          const invoiceId = invoiceNumber;
+          const invoiceDate = document.querySelector('[data-element-type="invoice-date"]').value;
+          const contractorName = document.querySelector('[data-element-type="contractor-name"]').value;
+          const clientName = document.querySelector('[data-element-type="client-name"]').value;
+          const subtotal = document.querySelector('[data-element-type="subtotal"]').value;
+          const discount = document.querySelector('[data-element-type="discount"]').value / 100;
+          const vat = document.querySelector('[data-element-type="vat"]').value / 100;
+          const total = document.querySelector('[data-element-type="total"]').value;
+          const comment = document.querySelector('[data-element-type="comment"]').value;
+
+          const productNameArray = Array.from(document.querySelectorAll('[data-element-type="product-name"]')).map(productNameElement => productNameElement.value);
+          const productDateArray = Array.from(document.querySelectorAll('[data-element-type="product-date"]')).map(productNameElement => productNameElement.value);
+          const producQuantityArray = Array.from(document.querySelectorAll('[data-element-type="product-quantity"]')).map(productNameElement => productNameElement.value);
+          const productPriceArray = Array.from(document.querySelectorAll('[data-element-type="product-price"]')).map(productNameElement => productNameElement.value);
+          const productTotalArray = Array.from(document.querySelectorAll('[data-element-type="product-total"]')).map(productNameElement => productNameElement.value);
+
+
+          // Проверяем данные введенные пользователем в форму:
+
+          if (contractorName == "") {
+            alert('Please fill in the company name ( From (Business Name)* )!');
+            return;
+          }
+
+          if (clientName == "") {
+            alert('Please fill in the client name ( To (Full Name / Business Name)* )!');
+            return;
+          }
+
+          if (productNameArray.every(productName => productName == '') && productPriceArray.every(productPrice => productPrice == '')) {
+            alert('At least one product must be filled!');
+            return;
+          }
+
+          if (productNameArray.length != new Set(productNameArray).size) {
+            alert('There should not be identical product names!');
+            return;
+          }
+
+          for (const productIndex in productNameArray) {
+            if (productNameArray[productIndex] != '' && productPriceArray[productIndex] == '') {
+              alert('There is a product position with an empty price field!');
+              return;
+            } else if (productNameArray[productIndex] == '' && productPriceArray[productIndex] != '') {
+              alert('There is a price position with an empty product field!');
+              return;
+            }
+          }
+
+
+          // Подгатавливаем данные для вставки на соответсвующий лист: "INVOICE REGISTRY":
+
+          const invoiceRegistryArray = [[]];
+
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.idIndex] = invoiceId;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.dateIndex] = invoiceDate;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.statusIndex] = false;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.contractorNameIndex] = contractorName;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.clientNameIndex] = clientName;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.subtotalIndex] = subtotal;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.discountIndex] = discount;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.vatIndex] = vat;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.totalIndex] = total;
+          invoiceRegistryArray[0][invoiceRegistryColumnNamesWithIndexes.commentIndex] = comment;
+
+
+          // Подгатавливаем данные для вставки на соответсвующий лист "PRODUCT REGISTRY":
+
+          const productRegistryArray = [];
+
+          for (let i in productNameArray) {    
+            
+            const newRowArray = [];
+
+            newRowArray[productRegistryColumnNamesWithIndexes.invoiceIdIndex] = invoiceId;
+            newRowArray[productRegistryColumnNamesWithIndexes.productNameIndex] = productNameArray[i];
+            newRowArray[productRegistryColumnNamesWithIndexes.dateIndex] = productDateArray[i];
+            newRowArray[productRegistryColumnNamesWithIndexes.qtyIndex] = producQuantityArray[i] == '' ? 1 : producQuantityArray[i];
+            newRowArray[productRegistryColumnNamesWithIndexes.priceIndex] = productPriceArray[i];
+            newRowArray[productRegistryColumnNamesWithIndexes.totalIndex] = productTotalArray[i];
+
+            if (productNameArray[i] && productPriceArray[i]) productRegistryArray.push(newRowArray);
+          }
+
+
+          // Собираем все в общий массив для отправки:
+          
+          const invoiceDataObject = {invoiceRegistryArray, productRegistryArray};
+
+
+          // Устанавлива сообщение и стиль в кнопку, что бы сообщить пользователь не закрывать её пока идет создание нового инвойс и что она закроется сама:
+
+          event.target.classList.add('button--waiting');
+          event.target.innerText = `Please don't close me, I'm creating an invoice for you and close myself when it is ready!`;
+
+
+          // В зависимости от цели вызова формы, запускаем соответсвующую функцию:
+
+          if (isNewInvoice == true) {
+            makeInvoice(invoiceDataObject);
+          } else {
+            editInvoice(invoiceDataObject);
+          }
 
 					break;
 				}
@@ -880,13 +1004,80 @@
 
 				// Делаем видимым новый элемент в соответсвии с выбраным именем контрагента:
 
-				if (index == selectedIndex) element.style.display = 'block'
+				if (index == selectedIndex) {
+          element.style.display = 'block'
+          element.setAttribute('title', element.textContent);
+        }
 
 			})
 
 		}
 
-	</script>
+
+    // Заполняет жлементами описания контрагентов в соответствии с порядком в массиве на листах с подрядчиком и контрагентом:
+
+    function addDescriptionElement(selector, sheetArray, cloumnIndex, elementType) {
+
+      const startDescriptionElement = document.querySelector(`${selector}`);
+      
+      let nextDescriptionElement;
+
+      sheetArray.forEach((sheetRowArray, index) => {
+        const descriptionElement = document.createElement("dd");
+        descriptionElement.classList.add("details")
+        descriptionElement.classList.add("details--display-none")
+        descriptionElement.textContent = sheetRowArray[cloumnIndex];
+        descriptionElement.dataset.elementType = `${elementType}`;
+
+        index == 0 ?
+          startDescriptionElement.insertAdjacentElement('afterend', descriptionElement) :
+          nextDescriptionElement.insertAdjacentElement('afterend', descriptionElement)
+
+        nextDescriptionElement = descriptionElement;
+      })
+
+    }
+
+
+    /*
+     Запускает функцию генерирующую pdf файл инвойса в корневой папке "INVOICES" google drive, перенося предыдущий инвойс в подпапку "INVOICES/ARCHIVE", 
+     сохраняя данные инвойса в соответсвующиъ реестах - листы "INVOICE REGISTRY" и "PRODUCT REGISTRY":
+    */
+
+    function makeInvoice(invoiceDataObject) {
+
+      google
+        .script
+        .run
+        .withFailureHandler(
+          (error) => {
+            google.script.host.close(); alert(`An error occurred while generating the invoice: "${error}", please try after some time!`)
+          }
+        ).withSuccessHandler(google.script.host.close)
+          .makeInvoice(invoiceDataObject);
+
+    }
+
+
+    /*
+     Запускает функцию генерирующую pdf файл обновленного инвойса в корневой папке "INVOICES" google drive, перенося предыдущий инвойс в подпапку "INVOICES/ARCHIVE", 
+     обновляя данные инвойса в соответсвующих реестах - листы "INVOICE REGISTRY" и "PRODUCT REGISTRY":
+    */
+
+    function editInvoice(invoiceDataObject) {
+
+      google
+        .script
+        .run
+        .withFailureHandler(
+          (error) => {
+            google.script.host.close(); alert(`An error occurred while generating the invoice: "${error}", please try after some time!`)
+          }
+        ).withSuccessHandler(google.script.host.close)
+          .editInvoice(invoiceDataObject);
+    }
+
+  </script>
 </body>
 
 </html>
